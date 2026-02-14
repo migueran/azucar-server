@@ -33,7 +33,7 @@ public class GenresServices implements IGenresServices {
     @Override
     public Genre searchById(Integer idGenre) {
         for (Genre genre : genresList) {
-            if (genre.getIdGenre().equals(idGenre)) {
+            if (genre.getId().equals(idGenre)) {
                 return genre;
             }
         }

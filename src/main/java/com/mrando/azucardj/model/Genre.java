@@ -9,15 +9,26 @@ public class Genre {
     this.nameGenre = name;
   }
 
-  public Integer getIdGenre() {
-    return this.id;
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNameGenre() {
-    return this.nameGenre;
+    return nameGenre;
   }
 
   public void setNameGenre(String nameGenre) {
     this.nameGenre = nameGenre;
+  }
+
+  public String toString() {
+    return "Genre{" +
+      "id=" + id +
+      ", nameGenre='" + nameGenre + '\'' +
+      '}';
   }
 }

@@ -15,16 +15,16 @@ public class Artist {
     this.idGenre = idGenre;
   }
 
-   public Integer getId() {
+  public Integer getId() {
     return id;
   }
 
-  public Artist gedArtistById(Integer id) {
-    return this;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNameArtist() {
-    return this.nameArtist;
+    return nameArtist;
   }
 
   public void setNameArtist(String nameArtist) {
@@ -36,6 +36,14 @@ public class Artist {
   }
 
   public Integer getGenre() {
-    return this.idGenre;
+    return idGenre;
+  }
+
+  public String toString() {
+    return "Artist{" +
+      "id=" + id +
+      ", nameArtist='" + nameArtist + '\'' +
+      ", idGenre=" + idGenre +
+      '}';
   }
 }

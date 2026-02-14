@@ -21,7 +21,6 @@ public class Theme {
     this.idGenre = idGenre;
   }
 
-  // Getters and Setters
   public Integer getId() {
     return id;
   }
@@ -30,12 +29,8 @@ public class Theme {
     this.id = id;
   }
 
-  public Theme getThemeById(Integer id) {
-    return this;
-  }
-
   public Integer getVideo() {
-    return this.idVideo;
+    return idVideo;
   }
 
   public void setUrl(Integer idVideo) {
@@ -43,7 +38,7 @@ public class Theme {
   }
 
   public String getName() {
-    return this.name;
+    return name;
   }
 
   public void setName(String name) {
@@ -51,19 +46,29 @@ public class Theme {
   }
 
   public Integer getArtist() {
-    return this.idArtist;
+    return idArtist;
   }
 
   public void setArtist(Integer idArtist) {
     this.idArtist = idArtist;
   }
 
-  public Integer getidGenre() {
-    return this.idGenre;
+  public Integer getGenre() {
+    return idGenre;
   }
 
-  public void setidGenre(Integer idGenre) {
+  public void setGenre(Integer idGenre) {
     this.idGenre = idGenre;
+  }
+
+  public String toString() {
+    return "Theme{" +
+      "id=" + id +
+      ", idVideo=" + idVideo +
+      ", name='" + name + '\'' +
+      ", idArtist=" + idArtist +
+      ", idGenre=" + idGenre +
+      '}';
   }
 
 }

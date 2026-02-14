@@ -4,8 +4,12 @@ public class Red {
   private Integer id;
   private String nameRed;
 
-  public Red getRedById(Integer id) {
-    return this;
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNameRed() {
@@ -13,6 +17,11 @@ public class Red {
   }
 
   public void setNameRed(String nameRed) {
+    this.nameRed = nameRed;
+  }
+
+  public Red(Integer id, String nameRed) {
+    this.id = id;
     this.nameRed = nameRed;
   }
 

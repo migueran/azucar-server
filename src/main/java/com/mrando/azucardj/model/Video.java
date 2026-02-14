@@ -18,12 +18,16 @@ public class Video {
     this.idGenre = idGenre;
   }
 
-  public Video getVideoById(Integer id) {
-    return this;
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNameVideo() {
-    return this.nameVideo;
+    return nameVideo;
   }
 
   public void setNameVideo(String nameVideo) {
@@ -31,7 +35,7 @@ public class Video {
   }
 
   public String getUrlVideo() {
-    return this.urlVideo;
+    return urlVideo;
   }
 
   public void setUrlVideo(String urlVideo) {
@@ -39,11 +43,20 @@ public class Video {
   }
 
   public Integer getGenre() {
-    return this.idGenre;
+    return idGenre;
   }
 
   public void setGenre(Integer idGenre) {
     this.idGenre = idGenre;
+  }
+
+  public String toString() {
+    return "Video{" +
+      "id=" + id +
+      ", nameVideo='" + nameVideo + '\'' +
+      ", urlVideo='" + urlVideo + '\'' +
+      ", idGenre=" + idGenre +
+      '}';
   }
 
 }

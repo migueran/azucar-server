@@ -19,8 +19,12 @@ public class DjList {
     this.items = idItems;
   }
 
-  public DjList getDjListaByI(Integer id) {
-    return this;
+  public Integer getId(Integer id) {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public Integer getidOwner() {
@@ -36,7 +40,7 @@ public class DjList {
   }
 
   public List<Integer> getItems() {
-    return this.items;
+    return items;
   }
 
   public void addItem(Integer idItem) {
@@ -45,5 +49,18 @@ public class DjList {
 
   public void removeItem(Integer idItem) {
     this.items.remove(idItem);
+  }
+
+  public void setItems(List<Integer> items) {
+    this.items = items;
+  }
+
+  public String toString() {
+    return "DjList{" +
+      "id=" + id +
+      ", idOwner=" + idOwner +
+      ", initDate=" + initDate +
+      ", items=" + items +
+      '}';
   }
 }

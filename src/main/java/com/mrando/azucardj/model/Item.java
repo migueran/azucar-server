@@ -27,16 +27,12 @@ public class Item {
     this.idTheme = idTheme;
   }
 
+  public Integer getId() {
+    return id;
+  }
+
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public Integer getId() {
-    return this.id;
-  }
-
-  public Item getItemById(Integer id) {
-    return this;
   }
 
   public void setInitTime(Integer initTime) {
@@ -44,7 +40,7 @@ public class Item {
   }
 
   public Integer getInitTime(Integer initTime) {
-    return this.initTime;
+    return initTime;
   }
 
   public void setEndTime(Integer endTime) {
@@ -52,11 +48,11 @@ public class Item {
   }
 
   public Integer getEndTime(Integer endTime) {
-    return this.endTime;
+    return endTime;
   }
 
   public Integer getidOwner() {
-    return this.idOwner;
+    return idOwner;
   }
 
   public void setidOwner(Integer idOwner) {
@@ -64,10 +60,20 @@ public class Item {
   }
 
   public Integer getIdTheme() {
-    return this.idTheme;
+    return idTheme;
   }
 
   public void setidTheme(Integer idTheme) {
     this.idTheme = idTheme;
+  }
+
+  public String toString() {
+    return "Item{" +
+      "id=" + id +
+      ", initTime=" + initTime +
+      ", endTime=" + endTime +
+      ", idOwner=" + idOwner +
+      ", idTheme=" + idTheme +
+      '}';
   }
 }
