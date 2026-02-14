@@ -26,11 +26,17 @@ public class GenresServices implements IGenresServices {
     }
 
     @Override
-    public void save(String genre) {
+    public void save(Genre genre) {
+        genresList.add(genre);
     }
 
     @Override
     public Genre searchById(Integer idGenre) {
+        for (Genre genre : genresList) {
+            if (genre.getIdGenre().equals(idGenre)) {
+                return genre;
+            }
+        }
         return null;
     }
 }

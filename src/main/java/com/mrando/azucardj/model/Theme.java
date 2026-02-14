@@ -4,20 +4,20 @@ public class Theme {
   private Integer id;
   private Integer idVideo;
   private String name;
-  private String artist;
+  private Integer idArtist;
   private Integer idGenre;
 
   public Theme(
     Integer id,
     Integer idVideo,
     String name,
-    String artist,
+    Integer idArtist,
     Integer idGenre
   ) {
     this.id = id;
     this.idVideo = idVideo;
     this.name = name;
-    this.artist = artist;
+    this.idArtist = idArtist;
     this.idGenre = idGenre;
   }
 
@@ -50,12 +50,12 @@ public class Theme {
     this.name = name;
   }
 
-  public String getArtist() {
-    return this.artist;
+  public Integer getArtist() {
+    return this.idArtist;
   }
 
-  public void setArtist(String artist) {
-    this.artist = artist;
+  public void setArtist(Integer idArtist) {
+    this.idArtist = idArtist;
   }
 
   public Integer getidGenre() {

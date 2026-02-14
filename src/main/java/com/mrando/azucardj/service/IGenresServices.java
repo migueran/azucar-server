@@ -5,6 +5,6 @@ import com.mrando.azucardj.model.Genre;
 
 public interface IGenresServices {
     List<Genre> fetch();
-    void save(String genre);
+    void save(Genre genre);
     Genre searchById(Integer idGenre);
 }

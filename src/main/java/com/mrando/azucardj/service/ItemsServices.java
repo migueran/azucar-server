@@ -81,27 +81,54 @@ public class ItemsServices implements IItemsServices {
 
     @Override
     public void save(Item item) {
+        itemsMocka.add(item);
     }
 
     @Override
     public Item searchById(Integer idItem) {
+        for (Item item : itemsMocka) {
+            if (item.getId() == idItem.intValue()) {
+                return item;
+            }
+        }
         return null;
     }
 
     @Override
     public List<Item> searchByOwner(Integer idOwner) {
-        return null;
+        List<Item> itemsByOwner = new LinkedList<Item>();
+        for (Item item : itemsMocka) {
+            if (item.getidOwner() == idOwner.intValue()) {
+                itemsByOwner.add(item);
+            }
+        }
+        return itemsByOwner;
     }
 
     @Override
     public List<Item> searchByGenre(Integer idGenre) {
+        List<Item> itemsByGenre = new LinkedList<Item>();
+        for (Item item : itemsMocka) {
+            if (item.getIdTheme() == idGenre.intValue()) {
+                itemsByGenre.add(item);
+            }
+        }
+        return itemsByGenre;
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchByGenre'");
+        // throw new UnsupportedOperationException("Unimplemented method 'searchByGenre'");
     }
 
     @Override
     public List<Item> searchByArtist(Integer idArtist) {
+        List<Item> itemsByArtist = new LinkedList<Item>();
+        for (Item item : itemsMocka) {
+            // if (item.getIdArtist() == idArtist.intValue()) {
+            //    itemsByArtist.add(item);
+            // }
+            System.out.println("guardar vacante: " + item);
+        }
+        return itemsByArtist;
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchByArtist'");
+        // throw new UnsupportedOperationException("Unimplemented method 'searchByArtist'");
     }
 }

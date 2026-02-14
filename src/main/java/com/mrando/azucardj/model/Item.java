@@ -31,7 +31,7 @@ public class Item {
     this.id = id;
   }
 
-  public Integer getId(Integer id) {
+  public Integer getId() {
     return this.id;
   }
 
@@ -63,7 +63,7 @@ public class Item {
     this.idOwner = idOwner;
   }
 
-  public Integer getidTheme() {
+  public Integer getIdTheme() {
     return this.idTheme;
   }
 

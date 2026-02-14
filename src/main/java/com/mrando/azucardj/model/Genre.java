@@ -9,12 +9,12 @@ public class Genre {
     this.nameGenre = name;
   }
 
-  public Genre getGenreById(Integer id) {
-    return this;
+  public Integer getIdGenre() {
+    return this.id;
   }
 
   public String getNameGenre() {
-    return nameGenre;
+    return this.nameGenre;
   }
 
   public void setNameGenre(String nameGenre) {

@@ -1,5 +1,7 @@
 package com.mrando.azucardj.controller;
 
+import org.springframework.ui.Model;
+
 import java.util.List;
 
 import com.mrando.azucardj.model.Genre;
@@ -21,12 +23,13 @@ public class GenresController {
     }
 
     @PostMapping
-    public void saveGenre(@RequestBody String genre) {
+    public void saveGenre(@RequestBody Genre genre) {
         genresServices.save(genre);
     }
 
-    @GetMapping("/{id}")
-    public Genre getGenreById(@PathVariable Integer id) {
-        return genresServices.searchById(id);
+    @GetMapping("/{idGenre}")
+    public Genre getGenreById(@PathVariable Integer idGenre, Model model) {
+        model.addAttribute("idGenre", idGenre);
+        return genresServices.searchById(idGenre);
     }
 }
