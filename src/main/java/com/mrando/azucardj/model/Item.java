@@ -1,44 +1,70 @@
 package com.mrando.azucardj.model;
 
-import java.time.LocalDateTime;
-
 public class Item {
   private Integer id;
-  private LocalDateTime initTime;
-  private LocalDateTime endTime;
-  private Integer idAuthor;
-  private Integer idTheme;
+  //private
+  public Integer initTime;
+  //private
+  public Integer endTime;
+  //private
+  public Integer idOwner;
+  //private
+  public Integer idTheme;
 
-  public Item(Integer id, LocalDateTime initTime, LocalDateTime endTime, Integer idAuthor, Integer idTheme) {
+  public Item() {
+  }
+  public Item(
+    Integer id,
+    Integer initTime,
+    Integer endTime,
+    Integer idOwner,
+    Integer idTheme
+  ) {
     this.id = id;
     this.initTime = initTime;
     this.endTime = endTime;
-    this.idAuthor = idAuthor;
+    this.idOwner = idOwner;
     this.idTheme = idTheme;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public Integer getId(Integer id) {
+    return this.id;
   }
 
   public Item getItemById(Integer id) {
     return this;
   }
 
-  public void setInitTime(LocalDateTime initTime) {
+  public void setInitTime(Integer initTime) {
     this.initTime = initTime;
   }
 
-  public void setEndTime(LocalDateTime endTime) {
+  public Integer getInitTime(Integer initTime) {
+    return this.initTime;
+  }
+
+  public void setEndTime(Integer endTime) {
     this.endTime = endTime;
   }
 
-  public Integer getidAuthor() {
-    return idAuthor;
+  public Integer getEndTime(Integer endTime) {
+    return this.endTime;
   }
 
-  public void setidAuthor(Integer idAuthor) {
-    this.idAuthor = idAuthor;
+  public Integer getidOwner() {
+    return this.idOwner;
+  }
+
+  public void setidOwner(Integer idOwner) {
+    this.idOwner = idOwner;
   }
 
   public Integer getidTheme() {
-    return idTheme;
+    return this.idTheme;
   }
 
   public void setidTheme(Integer idTheme) {

@@ -5,14 +5,25 @@ public class Video {
   private String nameVideo;
   private String urlVideo;
   private Integer idGenre;
-  private Red red;
+
+  public Video(
+    Integer id,
+    String nameVideo,
+    String urlVideo,
+    Integer idGenre
+  ) {
+    this.id = id;
+    this.nameVideo = nameVideo;
+    this.urlVideo = urlVideo;
+    this.idGenre = idGenre;
+  }
 
   public Video getVideoById(Integer id) {
     return this;
   }
 
   public String getNameVideo() {
-    return nameVideo;
+    return this.nameVideo;
   }
 
   public void setNameVideo(String nameVideo) {
@@ -20,7 +31,7 @@ public class Video {
   }
 
   public String getUrlVideo() {
-    return urlVideo;
+    return this.urlVideo;
   }
 
   public void setUrlVideo(String urlVideo) {
@@ -28,19 +39,11 @@ public class Video {
   }
 
   public Integer getGenre() {
-    return idGenre;
+    return this.idGenre;
   }
 
   public void setGenre(Integer idGenre) {
     this.idGenre = idGenre;
-  }
-
-  public Red getRed() {
-    return red;
-  }
-
-  public void setRed(Red red) {
-    this.red = red;
   }
 
 }

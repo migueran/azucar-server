@@ -1,11 +1,15 @@
 package com.mrando.azucardj.controller;
 
+import org.springframework.ui.Model;
+
 import java.util.List;
 
+import com.mrando.azucardj.model.Artist;
 import com.mrando.azucardj.service.ArtistsServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/artists")
@@ -15,17 +19,31 @@ public class ArtistsController {
     private ArtistsServices artistsServices;
 
     @GetMapping
-    public List<String> fetchArtists() {
+    public List<Artist> fetchArtists() {
         return artistsServices.fetch();
     }
 
     @PostMapping
-    public void saveArtist(@RequestBody String artist) {
+    public void saveArtist(@RequestBody Artist artist) {
         artistsServices.save(artist);
     }
 
     @GetMapping("/{name}")
-    public String getArtistByName(@PathVariable String name) {
+    public Artist getArtistByName(@PathVariable String name, Model model) {
+        model.addAttribute("name", name);
         return artistsServices.searchByName(name);
     }
+
+    @GetMapping("/{id}")
+    public Artist getArtistById(@PathVariable Integer id, Model model) {
+        model.addAttribute("id", id);
+        return artistsServices.searchById(id);
+    }
+
+    @GetMapping("/genero/{idGenre}")
+    public List<Artist> getArtistByGenre(@PathVariable Integer idGenre, Model model) {
+        model.addAttribute("idGenre", idGenre);
+        return artistsServices.searchByGenre(idGenre);
+    }
+
 }

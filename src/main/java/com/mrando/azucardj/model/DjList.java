@@ -10,18 +10,13 @@ public class DjList {
   private Integer id;
   private Integer idOwner;
   private LocalDateTime initDate;
-  private List<Item> items;
+  private List<Integer> items;
 
-  public DjList() {
-    this.items = new ArrayList<>();
-    this.initDate = LocalDateTime.now();
-  }
-
-  public DjList(Integer id, Integer idOwner) {
+  public DjList(Integer id, Integer idOwner, ArrayList<Integer> idItems) {
     this.id = id;
     this.idOwner = idOwner;
     this.initDate = LocalDateTime.now();
-    this.items = new ArrayList<>();
+    this.items = idItems;
   }
 
   public DjList getDjListaByI(Integer id) {
@@ -40,15 +35,15 @@ public class DjList {
     return initDate;
   }
 
-  public List<Item> getItems() {
-    return items;
+  public List<Integer> getItems() {
+    return this.items;
   }
 
-  public void addItem(Item item) {
-    this.items.add(item);
+  public void addItem(Integer idItem) {
+    this.items.add(idItem);
   }
 
-  public void removeItem(Item item) {
-    this.items.remove(item);
+  public void removeItem(Integer idItem) {
+    this.items.remove(idItem);
   }
 }

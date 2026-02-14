@@ -4,6 +4,11 @@ public class Genre {
   private Integer id;
   private String nameGenre;
 
+  public Genre(Integer id, String name) {
+    this.id = id;
+    this.nameGenre = name;
+  }
+
   public Genre getGenreById(Integer id) {
     return this;
   }
