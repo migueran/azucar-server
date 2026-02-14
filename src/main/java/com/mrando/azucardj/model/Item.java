@@ -2,17 +2,11 @@ package com.mrando.azucardj.model;
 
 public class Item {
   private Integer id;
-  //private
-  public Integer initTime;
-  //private
-  public Integer endTime;
-  //private
-  public Integer idOwner;
-  //private
-  public Integer idTheme;
+  private Integer initTime;
+  private Integer endTime;
+  private Integer idOwner;
+  private Integer idTheme;
 
-  public Item() {
-  }
   public Item(
     Integer id,
     Integer initTime,
@@ -51,7 +45,7 @@ public class Item {
     return endTime;
   }
 
-  public Integer getidOwner() {
+  public Integer getIdOwner() {
     return idOwner;
   }
 
@@ -63,7 +57,7 @@ public class Item {
     return idTheme;
   }
 
-  public void setidTheme(Integer idTheme) {
+  public void setIdTheme(Integer idTheme) {
     this.idTheme = idTheme;
   }
 

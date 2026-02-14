@@ -29,18 +29,27 @@ public class DjListServices implements IDjListServices {
 
     @Override
     public void save(DjList djList) {
-        // Implementación del método save
+        djListMocka.add(djList);
     }
 
     @Override
-    public DjList searchById(Integer idDjList) {
-        // Implementación del método searchById
+    public DjList searchById(Integer id) {
+        for (DjList djList : djListMocka) {
+            if (djList.getId().equals(id)) {
+                return djList;
+            }
+        }
         return null;
     }
 
     @Override
     public List<DjList> searchByOwner(Integer idOwner) {
-        // Implementación del método searchByOwner
+        List<DjList> djListByOwner = new java.util.LinkedList<DjList>();
+        for (DjList djList : djListMocka) {
+            if (djList.getidOwner().equals(idOwner)) {
+                djListByOwner.add(djList);
+            }
+        }
         return null;
     }
 

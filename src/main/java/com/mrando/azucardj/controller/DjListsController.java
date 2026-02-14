@@ -6,6 +6,7 @@ import com.mrando.azucardj.model.DjList;
 import com.mrando.azucardj.service.DjListServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,7 +27,8 @@ public class DjListsController {
     }
 
     @GetMapping("/{id}")
-    public DjList getDjListById(@PathVariable Integer id) {
+    public DjList getDjListById(@PathVariable Integer id, Model model) {
+        model.addAttribute("id", id);
         return DjListServices.searchById(id);
     }
 }

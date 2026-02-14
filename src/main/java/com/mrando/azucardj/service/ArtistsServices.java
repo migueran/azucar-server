@@ -63,9 +63,9 @@ public class ArtistsServices implements IArtistsServices {
     }
 
     @Override
-    public Artist searchById(Integer idArtist) {
+    public Artist searchById(Integer id) {
         for ( Artist art : artistsMocka) {
-			if (art.getId() == idArtist.intValue())
+			if (art.getId() == id.intValue())
 			    return art;
 		}
 		return null;

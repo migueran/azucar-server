@@ -68,10 +68,10 @@ public class ThemesServices implements IThemesServices {
     public List<Theme> searchByGenre(Integer idGenre) {
         List<Theme> themesByGenre = new LinkedList<Theme>();
         for (Theme theme : ThemesMocka) {
-            // if (theme.getIdGenre() == idGenre.intValue()) {
-            //     themesByGenre.add(theme);
-            // }
-            System.out.println(theme);
+            if (theme.getGenre() == idGenre.intValue()) {
+                themesByGenre.add(theme);
+            }
+            // System.out.println(theme);
         }
         return themesByGenre;
     }

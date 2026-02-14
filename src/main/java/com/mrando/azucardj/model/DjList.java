@@ -19,7 +19,7 @@ public class DjList {
     this.items = idItems;
   }
 
-  public Integer getId(Integer id) {
+  public Integer getId() {
     return id;
   }
 

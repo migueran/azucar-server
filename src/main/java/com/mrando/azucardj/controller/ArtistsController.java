@@ -28,16 +28,16 @@ public class ArtistsController {
         artistsServices.save(artist);
     }
 
-    @GetMapping("/{name}")
-    public Artist getArtistByName(@PathVariable String name, Model model) {
-        model.addAttribute("name", name);
-        return artistsServices.searchByName(name);
-    }
-
     @GetMapping("/{id}")
     public Artist getArtistById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
         return artistsServices.searchById(id);
+    }
+
+    @GetMapping("/{name}")
+    public Artist getArtistByName(@PathVariable String name, Model model) {
+        model.addAttribute("name", name);
+        return artistsServices.searchByName(name);
     }
 
     @GetMapping("/genero/{idGenre}")

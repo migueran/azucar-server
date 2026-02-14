@@ -98,7 +98,7 @@ public class ItemsServices implements IItemsServices {
     public List<Item> searchByOwner(Integer idOwner) {
         List<Item> itemsByOwner = new LinkedList<Item>();
         for (Item item : itemsMocka) {
-            if (item.getidOwner() == idOwner.intValue()) {
+            if (item.getIdOwner() == idOwner.intValue()) {
                 itemsByOwner.add(item);
             }
         }
