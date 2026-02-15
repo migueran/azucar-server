@@ -78,7 +78,7 @@ public class VideosServices implements IVideosServices {
     @Override
     public Video searchByName(String name) {
         for (Video video : VideosMocka) {
-            if (video.getName().equals(name.replace(" ", "-"))) {
+            if (video.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase())) {
                 return video;
             }
         }

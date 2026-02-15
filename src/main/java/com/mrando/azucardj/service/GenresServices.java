@@ -43,7 +43,7 @@ public class GenresServices implements IGenresServices {
     @Override
     public Genre searchByName(String name) {
         for (Genre genre : genresList) {
-            if (genre.getName().equals(name.replace(" ", "-"))) {
+            if (genre.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase())) {
                 return genre;
             }
         }

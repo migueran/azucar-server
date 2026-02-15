@@ -91,7 +91,7 @@ public class ThemesServices implements IThemesServices {
     public List<Theme> searchByName(String name) {
         List<Theme> themesByName = new LinkedList<Theme>();
         for (Theme theme : ThemesMocka) {
-            if (theme.getName().toLowerCase().replace(" ", "-").equals(name.toLowerCase())) {
+            if (theme.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase())) {
                 themesByName.add(theme);
             }
         }

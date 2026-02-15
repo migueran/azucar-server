@@ -43,9 +43,9 @@ public class ItemsController {
     }
 
     @GetMapping("/theme/{idTheme}")
-    public List<Item> getByTheme(@RequestParam String idTheme, Model model) {
+    public List<Item> getByTheme(@RequestParam Integer idTheme, Model model) {
         model.addAttribute("idTheme", idTheme);
-        return itemsServices.searchByTheme(Integer.parseInt(idTheme));
+        return itemsServices.searchByTheme(idTheme);
     }
 
 }

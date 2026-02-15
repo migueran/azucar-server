@@ -33,7 +33,7 @@ public class GenresController {
         return genresServices.searchById(idGenre);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public Genre getGenreByNane(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
         return genresServices.searchByName(name);

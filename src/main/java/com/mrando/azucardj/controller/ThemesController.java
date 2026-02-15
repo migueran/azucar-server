@@ -35,7 +35,7 @@ public class ThemesController {
         return themesServices.searchById(id);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public List<Theme> getThemesByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
         return themesServices.searchByName(name);

@@ -9,7 +9,6 @@ import com.mrando.azucardj.service.ArtistsServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/artists")
@@ -34,7 +33,7 @@ public class ArtistsController {
         return artistsServices.searchById(id);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public Artist getArtistByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
         return artistsServices.searchByName(name);

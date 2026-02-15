@@ -18,8 +18,8 @@ public class DjListServices implements IDjListServices {
         ArrayList<Integer> items2 = new ArrayList<>(
             Arrays.asList(3010,3020,3030,3040,3050,3060,3070,3080,3090,3100)
         );
-        djListMocka.add( new DjList(1, 000, items1));
-        djListMocka.add( new DjList(2, 000, items2));
+        djListMocka.add( new DjList(1, 1, items1));
+        djListMocka.add( new DjList(2, 1, items2));
     }
 
     @Override
@@ -50,7 +50,7 @@ public class DjListServices implements IDjListServices {
                 djListByOwner.add(djList);
             }
         }
-        return null;
+        return djListByOwner;
     }
 
 }

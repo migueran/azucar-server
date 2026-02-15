@@ -54,18 +54,18 @@ public class ArtistsServices implements IArtistsServices {
     }
 
     @Override
-    public Artist searchByName(String name) {
+    public Artist searchById(Integer id) {
         for ( Artist art : artistsMocka) {
-			if (art.getNameArtist() == name)
+			if (art.getId().equals(id))
 			    return art;
 		}
 		return null;
     }
 
     @Override
-    public Artist searchById(Integer id) {
+    public Artist searchByName(String name) {
         for ( Artist art : artistsMocka) {
-			if (art.getId() == id.intValue())
+			if (art.getNameArtist().toLowerCase().equals(name.replace("-", " ").toLowerCase()))
 			    return art;
 		}
 		return null;
@@ -75,7 +75,7 @@ public class ArtistsServices implements IArtistsServices {
     public List<Artist> searchByGenre(Integer idGenre) {
         List<Artist> artistsByGenre = new java.util.LinkedList<Artist>();
         for ( Artist art : artistsMocka) {
-			if (art.getGenre() == idGenre.intValue())
+			if (art.getGenre().equals(idGenre))
 			    artistsByGenre.add(art);
 		}
 		return artistsByGenre;
