@@ -31,4 +31,10 @@ public class DjListsController {
         model.addAttribute("id", id);
         return DjListServices.searchById(id);
     }
+
+    @GetMapping("/owner/{idOwner}")
+    public List<DjList> getDjListByOwner(@PathVariable Integer idOwner, Model model) {
+        model.addAttribute("idOwner", idOwner);
+        return DjListServices.searchByOwner(idOwner);
+    }
 }

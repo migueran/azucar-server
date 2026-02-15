@@ -68,7 +68,7 @@ public class ThemesServices implements IThemesServices {
     public List<Theme> searchByGenre(Integer idGenre) {
         List<Theme> themesByGenre = new LinkedList<Theme>();
         for (Theme theme : ThemesMocka) {
-            if (theme.getGenre() == idGenre.intValue()) {
+            if (theme.getGenre() == idGenre) {
                 themesByGenre.add(theme);
             }
             // System.out.println(theme);
@@ -80,10 +80,23 @@ public class ThemesServices implements IThemesServices {
     public List<Theme> searchByArtist(Integer idArtist) {
         List<Theme> themesByArtist = new LinkedList<Theme>();
         for (Theme theme : ThemesMocka) {
-            if (theme.getArtist() == idArtist.intValue()) {
+            if (theme.getArtist() == idArtist) {
                 themesByArtist.add(theme);
             }
         }
         return themesByArtist;
     }
+
+    @Override
+    public List<Theme> searchByName(String name) {
+        List<Theme> themesByName = new LinkedList<Theme>();
+        for (Theme theme : ThemesMocka) {
+            if (theme.getName().toLowerCase().replace(" ", "-").equals(name.toLowerCase())) {
+                themesByName.add(theme);
+            }
+        }
+        return themesByName;
+    }
+
+
 }

@@ -8,6 +8,6 @@ public interface IVideosServices {
     List<Video> fetch();
     void save(Video videoUrl);
     Video searchById(Integer idVideo);
+    Video searchByName(String name);
     List<Video> searchByGenre(Integer idGenre);
-    List<Video> searchByArtist(Integer idArtist);
 }

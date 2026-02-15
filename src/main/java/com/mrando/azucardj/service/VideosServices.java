@@ -51,22 +51,38 @@ public class VideosServices implements IVideosServices {
 
     @Override
     public void save(Video Video) {
+        VideosMocka.add(Video);
     }
 
     @Override
     public Video searchById(Integer idVideo) {
+        for (Video video : VideosMocka) {
+            if (video.getId().equals(idVideo)) {
+                return video;
+            }
+        }
         return null;
     }
 
     @Override
     public List<Video> searchByGenre(Integer idGenre) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchByGenre'");
+        List<Video> videosByGenre = new java.util.LinkedList<Video>();
+        for (Video video : VideosMocka) {
+            if (video.getGenre().equals(idGenre)) {
+                videosByGenre.add(video);
+            }
+        }
+        return videosByGenre;
     }
 
     @Override
-    public List<Video> searchByArtist(Integer idArtist) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchByArtist'");
+    public Video searchByName(String name) {
+        for (Video video : VideosMocka) {
+            if (video.getName().equals(name.replace(" ", "-"))) {
+                return video;
+            }
+        }
+        return null;
     }
+
 }

@@ -11,5 +11,5 @@ public interface IItemsServices {
     Item searchById(Integer idItem);
     List<Item> searchByOwner(Integer idOwner);
     List<Item> searchByGenre(Integer idGenre);
-    List<Item> searchByArtist(Integer idArtist);
+    List<Item> searchByTheme(Integer idThdeme);
 }

@@ -87,7 +87,7 @@ public class ItemsServices implements IItemsServices {
     @Override
     public Item searchById(Integer idItem) {
         for (Item item : itemsMocka) {
-            if (item.getId() == idItem.intValue()) {
+            if (item.getId() == idItem) {
                 return item;
             }
         }
@@ -98,7 +98,7 @@ public class ItemsServices implements IItemsServices {
     public List<Item> searchByOwner(Integer idOwner) {
         List<Item> itemsByOwner = new LinkedList<Item>();
         for (Item item : itemsMocka) {
-            if (item.getIdOwner() == idOwner.intValue()) {
+            if (item.getIdOwner() == idOwner) {
                 itemsByOwner.add(item);
             }
         }
@@ -109,7 +109,7 @@ public class ItemsServices implements IItemsServices {
     public List<Item> searchByGenre(Integer idGenre) {
         List<Item> itemsByGenre = new LinkedList<Item>();
         for (Item item : itemsMocka) {
-            if (item.getIdTheme() == idGenre.intValue()) {
+            if (item.getIdTheme() == idGenre) {
                 itemsByGenre.add(item);
             }
         }
@@ -119,16 +119,13 @@ public class ItemsServices implements IItemsServices {
     }
 
     @Override
-    public List<Item> searchByArtist(Integer idArtist) {
-        List<Item> itemsByArtist = new LinkedList<Item>();
+    public List<Item> searchByTheme(Integer idTheme) {
+        List<Item> itemsByTheme = new LinkedList<Item>();
         for (Item item : itemsMocka) {
-            // if (item.getIdArtist() == idArtist.intValue()) {
-            //    itemsByArtist.add(item);
-            // }
-            System.out.println("guardar vacante: " + item);
+            if (item.getIdTheme() == idTheme) {
+               itemsByTheme.add(item);
+            }
         }
-        return itemsByArtist;
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'searchByArtist'");
+        return itemsByTheme;
     }
 }

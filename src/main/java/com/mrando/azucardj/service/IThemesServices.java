@@ -9,4 +9,5 @@ public interface IThemesServices {
     Theme searchById(Integer idTheme);
     List<Theme> searchByGenre(Integer idGenre);
     List<Theme> searchByArtist(Integer idArtist);
+    List<Theme> searchByName(String name);
 }

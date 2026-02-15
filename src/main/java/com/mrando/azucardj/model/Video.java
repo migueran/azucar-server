@@ -2,19 +2,19 @@ package com.mrando.azucardj.model;
 
 public class Video {
   private Integer id;
-  private String nameVideo;
-  private String urlVideo;
+  private String name;
+  private String url;
   private Integer idGenre;
 
   public Video(
     Integer id,
-    String nameVideo,
-    String urlVideo,
+    String name,
+    String url,
     Integer idGenre
   ) {
     this.id = id;
-    this.nameVideo = nameVideo;
-    this.urlVideo = urlVideo;
+    this.name = name;
+    this.url = url;
     this.idGenre = idGenre;
   }
 
@@ -26,20 +26,20 @@ public class Video {
     this.id = id;
   }
 
-  public String getNameVideo() {
-    return nameVideo;
+  public String getName() {
+    return name;
   }
 
-  public void setNameVideo(String nameVideo) {
-    this.nameVideo = nameVideo;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public String getUrlVideo() {
-    return urlVideo;
+  public String getUrl() {
+    return url;
   }
 
-  public void setUrlVideo(String urlVideo) {
-    this.urlVideo = urlVideo;
+  public void setUrl(String url) {
+    this.url = url;
   }
 
   public Integer getGenre() {
@@ -53,8 +53,8 @@ public class Video {
   public String toString() {
     return "Video{" +
       "id=" + id +
-      ", nameVideo='" + nameVideo + '\'' +
-      ", urlVideo='" + urlVideo + '\'' +
+      ", nameVideo='" + name + '\'' +
+      ", url='" + url + '\'' +
       ", idGenre=" + idGenre +
       '}';
   }

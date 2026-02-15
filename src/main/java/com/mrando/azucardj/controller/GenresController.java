@@ -32,4 +32,10 @@ public class GenresController {
         model.addAttribute("idGenre", idGenre);
         return genresServices.searchById(idGenre);
     }
+
+    @GetMapping("/{name}")
+    public Genre getGenreByNane(@PathVariable String name, Model model) {
+        model.addAttribute("name", name);
+        return genresServices.searchByName(name);
+    }
 }

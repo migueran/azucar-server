@@ -2,11 +2,11 @@ package com.mrando.azucardj.model;
 
 public class Genre {
   private Integer id;
-  private String nameGenre;
+  private String name;
 
   public Genre(Integer id, String name) {
     this.id = id;
-    this.nameGenre = name;
+    this.name = name;
   }
 
   public Integer getId() {
@@ -17,18 +17,18 @@ public class Genre {
     this.id = id;
   }
 
-  public String getNameGenre() {
-    return nameGenre;
+  public String getName() {
+    return name;
   }
 
-  public void setNameGenre(String nameGenre) {
-    this.nameGenre = nameGenre;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String toString() {
     return "Genre{" +
       "id=" + id +
-      ", nameGenre='" + nameGenre + '\'' +
+      ", name='" + name + '\'' +
       '}';
   }
 }

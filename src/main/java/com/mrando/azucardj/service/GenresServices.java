@@ -39,4 +39,14 @@ public class GenresServices implements IGenresServices {
         }
         return null;
     }
+
+    @Override
+    public Genre searchByName(String name) {
+        for (Genre genre : genresList) {
+            if (genre.getName().equals(name.replace(" ", "-"))) {
+                return genre;
+            }
+        }
+        return null;
+    }
 }
