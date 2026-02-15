@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/Lists")
+@RequestMapping("/lists")
 public class DjListsController {
 
     @Autowired
