@@ -7,5 +7,6 @@ public interface IGenresServices {
     List<Genre> fetch();
     void save(Genre genre);
     Genre searchById(Integer idGenre);
+    void deleteById(Integer idGenre);
     Genre searchByName(String name);
 }

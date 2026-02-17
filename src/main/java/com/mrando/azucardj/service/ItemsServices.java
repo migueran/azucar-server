@@ -114,8 +114,6 @@ public class ItemsServices implements IItemsServices {
             }
         }
         return itemsByGenre;
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'searchByGenre'");
     }
 
     @Override

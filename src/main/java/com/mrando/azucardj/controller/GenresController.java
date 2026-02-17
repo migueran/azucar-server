@@ -38,4 +38,9 @@ public class GenresController {
         model.addAttribute("name", name);
         return genresServices.searchByName(name);
     }
+
+    @DeleteMapping("/{idGenre}")
+    public void deleteGenreById(@PathVariable Integer idGenre) {
+        genresServices.deleteById(idGenre);
+    }
 }
