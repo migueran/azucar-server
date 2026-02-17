@@ -2,16 +2,16 @@ package com.mrando.azucardj.model;
 
 public class Artist {
   private Integer id;
-  private String nameArtist;
+  private String name;
   private Integer idGenre;
 
   public Artist(
     Integer id,
-    String nameArtist,
+    String name,
     Integer idGenre
   ) {
     this.id = id;
-    this.nameArtist = nameArtist;
+    this.name = name;
     this.idGenre = idGenre;
   }
 
@@ -23,12 +23,12 @@ public class Artist {
     this.id = id;
   }
 
-  public String getNameArtist() {
-    return nameArtist;
+  public String getName() {
+    return name;
   }
 
-  public void setNameArtist(String nameArtist) {
-    this.nameArtist = nameArtist;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public void setGenre(Integer idGenre) {
@@ -42,7 +42,7 @@ public class Artist {
   public String toString() {
     return "Artist{" +
       "id=" + id +
-      ", nameArtist='" + nameArtist + '\'' +
+      ", name='" + name + '\'' +
       ", idGenre=" + idGenre +
       '}';
   }

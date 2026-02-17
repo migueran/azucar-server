@@ -2,8 +2,8 @@ package com.mrando.azucardj.model;
 
 public class Theme {
   private Integer id;
-  private Integer idVideo;
   private String name;
+  private Integer idVideo;
   private Integer idArtist;
   private Integer idGenre;
 

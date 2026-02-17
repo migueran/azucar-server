@@ -65,7 +65,7 @@ public class ArtistsServices implements IArtistsServices {
     @Override
     public Artist searchByName(String name) {
         for ( Artist art : artistsMocka) {
-			if (art.getNameArtist().toLowerCase().equals(name.replace("-", " ").toLowerCase()))
+			if (art.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase()))
 			    return art;
 		}
 		return null;

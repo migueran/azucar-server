@@ -4,18 +4,15 @@ public class Video {
   private Integer id;
   private String name;
   private String url;
-  private Integer idGenre;
 
   public Video(
     Integer id,
     String name,
-    String url,
-    Integer idGenre
+    String url
   ) {
     this.id = id;
     this.name = name;
     this.url = url;
-    this.idGenre = idGenre;
   }
 
   public Integer getId() {
@@ -42,20 +39,11 @@ public class Video {
     this.url = url;
   }
 
-  public Integer getGenre() {
-    return idGenre;
-  }
-
-  public void setGenre(Integer idGenre) {
-    this.idGenre = idGenre;
-  }
-
   public String toString() {
     return "Video{" +
       "id=" + id +
       ", nameVideo='" + name + '\'' +
       ", url='" + url + '\'' +
-      ", idGenre=" + idGenre +
       '}';
   }
 

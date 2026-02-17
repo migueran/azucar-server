@@ -18,8 +18,8 @@ public class DjListServices implements IDjListServices {
         ArrayList<Integer> items2 = new ArrayList<>(
             Arrays.asList(3010,3020,3030,3040,3050,3060,3070,3080,3090,3100)
         );
-        djListMocka.add( new DjList(1, 1, items1));
-        djListMocka.add( new DjList(2, 1, items2));
+        djListMocka.add( new DjList(1, "my List", 1, items1));
+        djListMocka.add( new DjList(2, "other list", 1, items2));
     }
 
     @Override
@@ -36,6 +36,16 @@ public class DjListServices implements IDjListServices {
     public DjList searchById(Integer id) {
         for (DjList djList : djListMocka) {
             if (djList.getId().equals(id)) {
+                return djList;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public DjList searchByname(String name) {
+        for (DjList djList : djListMocka) {
+            if (djList.getName().toLowerCase().equals(name.toLowerCase().replace(" ", "_"))) {
                 return djList;
             }
         }

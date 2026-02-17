@@ -10,5 +10,6 @@ public interface IDjListServices {
   List<DjList> fetch();
   void save(DjList djList);
   DjList searchById(Integer idDjList);
+  DjList searchByname(String name);
   List<DjList> searchByOwner(Integer idOwner);
 }

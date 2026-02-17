@@ -12,35 +12,35 @@ public class VideosServices implements IVideosServices {
     VideosServices() {
         VideosMocka = new java.util.LinkedList<Video>();
         VideosMocka.add( new Video(
-            401, "Bohemian Rhapsody", "https://www.youtube.com/watch?v=fJ9rUzIMcZQ", 501
-        ));
+            401, "Bohemian Rhapsody", "https://www.youtube.com/watch?v=fJ9rUzIMcZQ"
+         ));
         VideosMocka.add( new Video(
-            402, "Imagine", "https://www.youtube.com/watch?v=YkgkThdzX-8", 502
-        ));
+            402, "Imagine", "https://www.youtube.com/watch?v=YkgkThdzX-8"
+         ));
         VideosMocka.add( new Video(
-            403, "Hotel California", "https://www.youtube.com/watch?v=EqPtz5qN7HM", 503
-        ));
+            403, "Hotel California", "https://www.youtube.com/watch?v=EqPtz5qN7HM"
+         ));
         VideosMocka.add( new Video(
-            404, "Stairway to Heaven", "https://www.youtube.com/watch?v=QkF3oxziUI4", 504
-        ));
+            404, "Stairway to Heaven", "https://www.youtube.com/watch?v=QkF3oxziUI4"
+         ));
         VideosMocka.add( new Video(
-            405, "Smells Like Teen Spirit", "https://www.youtube.com/watch?v=hTWKbfoikeg", 505
-        ));
+            405, "Smells Like Teen Spirit", "https://www.youtube.com/watch?v=hTWKbfoikeg"
+         ));
         VideosMocka.add( new Video(
-            406, "Billie Jean", "https://www.youtube.com/watch?v=Zi_XLOBDo_Y", 506
-        ));
+            406, "Billie Jean", "https://www.youtube.com/watch?v=Zi_XLOBDo_Y"
+         ));
         VideosMocka.add( new Video(
-            407, "Like a Rolling Stone", "https://www.youtube.com/watch?v=IwOfCgkyEj0", 507
-        ));
+            407, "Like a Rolling Stone", "https://www.youtube.com/watch?v=IwOfCgkyEj0"
+         ));
         VideosMocka.add( new Video(
-            408, "Hey Jude", "https://www.youtube.com/watch?v=A_MjCqQoLLA", 508
-        ));
+            408, "Hey Jude", "https://www.youtube.com/watch?v=A_MjCqQoLLA"
+         ));
         VideosMocka.add( new Video(
-            409, "Purple Rain", "https://www.youtube.com/watch?v=TvnYmWpD_T8", 509
-        ));
+            409, "Purple Rain", "https://www.youtube.com/watch?v=TvnYmWpD_T8"
+         ));
         VideosMocka.add( new Video(
-            410, "Wonderwall", "https://www.youtube.com/watch?v=bx1Bh8ZvH84", 510
-        ));
+            410, "Wonderwall", "https://www.youtube.com/watch?v=bx1Bh8ZvH84"
+         ));
 
     }
 
@@ -62,17 +62,6 @@ public class VideosServices implements IVideosServices {
             }
         }
         return null;
-    }
-
-    @Override
-    public List<Video> searchByGenre(Integer idGenre) {
-        List<Video> videosByGenre = new java.util.LinkedList<Video>();
-        for (Video video : VideosMocka) {
-            if (video.getGenre().equals(idGenre)) {
-                videosByGenre.add(video);
-            }
-        }
-        return videosByGenre;
     }
 
     @Override

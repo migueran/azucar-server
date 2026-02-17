@@ -8,12 +8,14 @@ import java.util.List;
 public class DjList {
 
   private Integer id;
+  private String name;
   private Integer idOwner;
   private LocalDateTime initDate;
   private List<Integer> items;
 
-  public DjList(Integer id, Integer idOwner, ArrayList<Integer> idItems) {
+  public DjList(Integer id, String name, Integer idOwner, ArrayList<Integer> idItems) {
     this.id = id;
+    this.name = name;
     this.idOwner = idOwner;
     this.initDate = LocalDateTime.now();
     this.items = idItems;
@@ -25,6 +27,14 @@ public class DjList {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Integer getidOwner() {
