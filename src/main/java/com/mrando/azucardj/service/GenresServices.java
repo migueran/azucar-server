@@ -48,6 +48,17 @@ public class GenresServices implements IGenresServices {
     }
 
     @Override
+    public Genre updateById(Integer idGene, Genre genre) {
+        Optional<Genre> genreOptional = repoGenres.findById(idGene);
+        if (genreOptional.isPresent()) {
+            Genre existingGenre = genreOptional.get();
+            existingGenre.setName(genre.getName());
+            return repoGenres.save(existingGenre);
+        }
+        return null;
+    }
+
+    @Override
     public void deleteById(Integer idGenre) {
         repoGenres.deleteById(idGenre);
     }

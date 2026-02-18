@@ -9,6 +9,10 @@ import com.mrando.azucardj.service.GenresServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @RequestMapping("/genres")
@@ -37,6 +41,11 @@ public class GenresController {
     public Genre getGenreByNane(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
         return genresServices.searchByName(name);
+    }
+
+    @PutMapping("/{id}")
+    public Genre updateGenreById(@PathVariable Integer id, @RequestBody Genre genre) {
+        return genresServices.updateById(id, genre);
     }
 
     @DeleteMapping("/{idGenre}")
