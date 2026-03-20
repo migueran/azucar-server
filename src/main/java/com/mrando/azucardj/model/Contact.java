@@ -4,23 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Contacts")
 public class Contact {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private Integer idNetwork;
+  private Integer id_network;
   private String url;
-
-  // public Contact() {}
-
-  // public Contact(Integer id, Integer idNetwork, String url) {
-  //   this.id = id;
-  //   this.idNetwork = idNetwork;
-  //   this.url = url;
-  // }
 
   public Integer getId() {
     return id;
@@ -31,11 +24,11 @@ public class Contact {
   }
 
   public Integer getIdNetwork() {
-    return idNetwork;
+    return id_network;
   }
 
   public void setIdNetwork(Integer idNetwork) {
-    this.idNetwork = idNetwork;
+    this.id_network = idNetwork;
   }
 
   public String getUrl() {
