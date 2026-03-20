@@ -15,6 +15,13 @@ public class NetworksServices implements INetworksServices {
    @Autowired
    private NetworksRepository repoNetworks;
 
+//    public RedServices() {
+//     listRed.add( new Red(1, "facebook"));
+//     listRed.add( new Red(2, "instagram"));
+//     listRed.add( new Red(3, "twitter"));
+//     listRed.add( new Red(4, "tiktok"));
+//   }
+
    @Override
    public List<Network> fetch() {
       return (List<Network>) repoNetworks.findAll();
