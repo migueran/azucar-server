@@ -9,4 +9,5 @@ public interface IVideosServices {
     void save(Video videoUrl);
     Video searchById(Integer idVideo);
     Video searchByName(String name);
+    void deleteById(Integer id);
 }

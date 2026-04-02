@@ -1,19 +1,19 @@
 package com.mrando.azucardj.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Videos")
 public class Video {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
   private String url;
-
-  public Video(
-    Integer id,
-    String name,
-    String url
-  ) {
-    this.id = id;
-    this.name = name;
-    this.url = url;
-  }
 
   public Integer getId() {
     return id;
