@@ -22,34 +22,34 @@ public class GenresController {
     private GenresServices genresServices;
 
     @GetMapping
-    public List<Genre> fetchGenres() {
+    public List<Genre> fetch() {
         return genresServices.fetch();
     }
 
     @PostMapping
-    public void saveGenre(@RequestBody Genre genre) {
+    public void save(@RequestBody Genre genre) {
         genresServices.save(genre);
     }
 
     @GetMapping("/{idGenre}")
-    public Genre getGenreById(@PathVariable Integer idGenre, Model model) {
+    public Genre getById(@PathVariable Integer idGenre, Model model) {
         model.addAttribute("idGenre", idGenre);
-        return genresServices.searchById(idGenre);
+        return genresServices.findById(idGenre);
     }
 
     @GetMapping("/name/{name}")
-    public Genre getGenreByNane(@PathVariable String name, Model model) {
+    public Genre getByNane(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
-        return genresServices.searchByName(name);
+        return genresServices.findByName(name);
     }
 
     @PutMapping("/{id}")
-    public Genre updateGenreById(@PathVariable Integer id, @RequestBody Genre genre) {
-        return genresServices.updateById(id, genre);
+    public Genre update(@PathVariable Integer id, @RequestBody Genre genre) {
+        return genresServices.update(id, genre);
     }
 
     @DeleteMapping("/{idGenre}")
-    public void deleteGenreById(@PathVariable Integer idGenre) {
-        genresServices.deleteById(idGenre);
+    public void delete(@PathVariable Integer idGenre) {
+        genresServices.delete(idGenre);
     }
 }

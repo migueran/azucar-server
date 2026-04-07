@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.mrando.azucardj.model.Video;
 import com.mrando.azucardj.repository.VideosRepository;
+import com.mrando.azucardj.service.Interfaces.IVideosServices;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,12 +56,12 @@ public class VideosServices implements IVideosServices {
     }
 
     @Override
-    public Video searchById(Integer idVideo) {
+    public Video findById(Integer idVideo) {
         return videoRepository.findById(idVideo).orElse(null);
     }
 
     @Override
-    public Video searchByName(String name) {
+    public Video findByName(String name) {
         return videoRepository.findAll().stream()
             .filter(video -> video.getName().equalsIgnoreCase(name))
             .findFirst()
@@ -72,7 +74,7 @@ public class VideosServices implements IVideosServices {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void delete(Integer id) {
         videoRepository.deleteById(id);
     }
 

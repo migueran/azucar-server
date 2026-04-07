@@ -8,7 +8,6 @@ import com.mrando.azucardj.service.ThemesServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/themes")
@@ -18,36 +17,36 @@ public class ThemesController {
     private ThemesServices themesServices;
 
     @GetMapping
-    public List<Theme> fetchThemes() {
+    public List<Theme> fetch() {
         return themesServices.fetch();
     }
 
     @PostMapping
-    public void saveTheme(@RequestBody Theme theme) {
+    public void save(@RequestBody Theme theme) {
         themesServices.save(theme);
     }
 
     @GetMapping("/{id}")
-    public Theme getThemeById(@PathVariable Integer id, Model model) {
+    public Theme getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return themesServices.searchById(id);
+        return themesServices.findById(id);
     }
 
     @GetMapping("/name/{name}")
-    public List<Theme> getThemesByName(@PathVariable String name, Model model) {
+    public List<Theme> getByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
-        return themesServices.searchByName(name);
+        return themesServices.findByName(name);
     }
 
     @GetMapping("/artist/{idArtist}")
-    public List<Theme> getThemesByArtist(@PathVariable Integer idArtist, Model model) {
+    public List<Theme> getByArtist(@PathVariable Integer idArtist, Model model) {
         model.addAttribute("idArtist", idArtist);
-        return themesServices.searchByArtist(idArtist);
+        return themesServices.findByArtist(idArtist);
     }
 
     @GetMapping("/genre/{idGenre}")
-    public List<Theme> getThemesByGenre(@PathVariable Integer idGenre, Model model) {
+    public List<Theme> getByGenre(@PathVariable Integer idGenre, Model model) {
         model.addAttribute("idGenre", idGenre);
-        return themesServices.searchByGenre(idGenre);
+        return themesServices.findByGenre(idGenre);
     }
 }

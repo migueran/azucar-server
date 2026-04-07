@@ -1,4 +1,4 @@
-package com.mrando.azucardj.service;
+package com.mrando.azucardj.service.Interfaces;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.mrando.azucardj.model.DjList;
 public interface IDjListServices {
   List<DjList> fetch();
   void save(DjList djList);
-  DjList searchById(Integer idDjList);
-  DjList searchByname(String name);
-  List<DjList> searchByOwner(Integer idOwner);
+  DjList findById(Integer idDjList);
+  DjList findByName(String name);
+  List<DjList> findByOwner(Integer idOwner);
 }

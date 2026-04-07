@@ -17,34 +17,34 @@ public class NetworksController {
     private NetworksServices networksServices;
 
     @GetMapping
-    public List<Network> fetchNetworks() {
+    public List<Network> fetch() {
         return networksServices.fetch();
     }
 
     @PostMapping
-    public void saveNetwork(@RequestBody Network network) {
+    public void save(@RequestBody Network network) {
         networksServices.save(network);
     }
 
     @GetMapping("/{id}")
-    public Network getNetworkById(@PathVariable Integer id, Model model) {
+    public Network getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return networksServices.getById(id);
+        return networksServices.findById(id);
     }
 
     @PutMapping("/{id}")
-    public Network updateNetworkById(@PathVariable Integer id, @RequestBody Network network) {
-        return networksServices.updateById(id, network);
+    public Network update(@PathVariable Integer id, @RequestBody Network network) {
+        return networksServices.update(id, network);
     }
 
     @GetMapping("/name/{name}")
-    public Network getNetworkByName(@PathVariable String name, Model model) {
+    public Network getByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
-        return networksServices.getByName(name);
+        return networksServices.findByName(name);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteNetworkById(@PathVariable Integer id) {
-        networksServices.deleteById(id);
+    public void delete(@PathVariable Integer id) {
+        networksServices.delete(id);
     }
 }

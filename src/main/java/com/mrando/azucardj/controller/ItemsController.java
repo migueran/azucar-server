@@ -21,31 +21,31 @@ public class ItemsController {
     private ItemsServices itemsServices;
 
     @GetMapping
-    public List<Item> fetchItems() {
+    public List<Item> fetch() {
         return itemsServices.fetch();
     }
 
     @PostMapping
-    public void saveItem(@RequestBody Item item) {
+    public void save(@RequestBody Item item) {
         itemsServices.save(item);
     }
 
     @GetMapping("/{id}")
-    public Item getItemById(@PathVariable Integer id, Model model) {
+    public Item getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return itemsServices.searchById(id);
+        return itemsServices.findById(id);
     }
 
     @GetMapping("/owner/{idOwner}")
     public List<Item> getByOwner(@RequestParam Integer idOwner, Model model) {
         model.addAttribute("idOwner", idOwner);
-        return itemsServices.searchByOwner(idOwner);
+        return itemsServices.findByOwner(idOwner);
     }
 
     @GetMapping("/theme/{idTheme}")
     public List<Item> getByTheme(@RequestParam Integer idTheme, Model model) {
         model.addAttribute("idTheme", idTheme);
-        return itemsServices.searchByTheme(idTheme);
+        return itemsServices.findByTheme(idTheme);
     }
 
 }

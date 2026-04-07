@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mrando.azucardj.model.Contact;
 import com.mrando.azucardj.repository.ContactsRepository;
+import com.mrando.azucardj.service.Interfaces.IContactsServices;
 
 @Service
 public class ContactsServices implements IContactsServices {
@@ -26,12 +27,12 @@ public class ContactsServices implements IContactsServices {
     }
 
     @Override
-    public Contact searchById(Integer id) {
+    public Contact findById(Integer id) {
         return repoContacts.findById(id).orElse(null);
     }
 
     @Override
-    public Contact updateById(Integer idContact, Contact contact) {
+    public Contact update(Integer idContact, Contact contact) {
       repoContacts.findById(idContact).ifPresent(existingContact -> {
             repoContacts.save(existingContact);
         });
@@ -39,7 +40,7 @@ public class ContactsServices implements IContactsServices {
       }
 
     @Override
-    public void deleteById(Integer id) {
+    public void delete(Integer id) {
         repoContacts.deleteById(id);
     }
 

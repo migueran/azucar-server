@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.mrando.azucardj.model.Genre;
 import com.mrando.azucardj.repository.GenresRepository;
+import com.mrando.azucardj.service.Interfaces.IGenresServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class GenresServices implements IGenresServices {
     }
 
     @Override
-    public Genre searchById(Integer idGenre) {
+    public Genre findById(Integer idGenre) {
         Optional<Genre> genreOptional = repoGenres.findById(idGenre);
         if (genreOptional.isPresent()) {
             return genreOptional.get();
@@ -48,7 +49,7 @@ public class GenresServices implements IGenresServices {
     }
 
     @Override
-    public Genre updateById(Integer idGene, Genre genre) {
+    public Genre update(Integer idGene, Genre genre) {
         Optional<Genre> genreOptional = repoGenres.findById(idGene);
         if (genreOptional.isPresent()) {
             Genre existingGenre = genreOptional.get();
@@ -59,12 +60,12 @@ public class GenresServices implements IGenresServices {
     }
 
     @Override
-    public void deleteById(Integer idGenre) {
+    public void delete(Integer idGenre) {
         repoGenres.deleteById(idGenre);
     }
 
     @Override
-    public Genre searchByName(String name) {
+    public Genre findByName(String name) {
         List<Genre> genresList = (List<Genre>) repoGenres.findAll();
         for (Genre genre : genresList) {
             if (genre.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase())) {

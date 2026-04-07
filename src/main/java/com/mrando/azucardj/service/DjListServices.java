@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.mrando.azucardj.model.DjList;
+import com.mrando.azucardj.service.Interfaces.IDjListServices;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,7 +35,7 @@ public class DjListServices implements IDjListServices {
     }
 
     @Override
-    public DjList searchById(Integer id) {
+    public DjList findById(Integer id) {
         for (DjList djList : djListMocka) {
             if (djList.getId().equals(id)) {
                 return djList;
@@ -43,7 +45,7 @@ public class DjListServices implements IDjListServices {
     }
 
     @Override
-    public DjList searchByname(String name) {
+    public DjList findByName(String name) {
         for (DjList djList : djListMocka) {
             if (djList.getName().toLowerCase().equals(name.toLowerCase().replace(" ", "_"))) {
                 return djList;
@@ -53,7 +55,7 @@ public class DjListServices implements IDjListServices {
     }
 
     @Override
-    public List<DjList> searchByOwner(Integer idOwner) {
+    public List<DjList> findByOwner(Integer idOwner) {
         List<DjList> djListByOwner = new java.util.LinkedList<DjList>();
         for (DjList djList : djListMocka) {
             if (djList.getidOwner().equals(idOwner)) {

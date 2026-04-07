@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.mrando.azucardj.model.Network;
 import com.mrando.azucardj.repository.NetworksRepository;
+import com.mrando.azucardj.service.Interfaces.INetworksServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class NetworksServices implements INetworksServices {
    }
 
    @Override
-   public Network getById(Integer id) {
+   public Network findById(Integer id) {
       Optional<Network> networkOptional = repoNetworks.findById(id);
       if (networkOptional.isPresent()) {
         return networkOptional.get();
@@ -35,7 +36,7 @@ public class NetworksServices implements INetworksServices {
    }
 
    @Override
-   public Network updateById(Integer idNetwork, Network network) {
+   public Network update(Integer idNetwork, Network network) {
     Optional<Network> networkOptional = repoNetworks.findById(idNetwork);
     if (networkOptional.isPresent()) {
         Network existingNetwork = networkOptional.get();
@@ -46,12 +47,12 @@ public class NetworksServices implements INetworksServices {
    }
 
    @Override
-   public void deleteById(Integer id) {
+   public void delete(Integer id) {
      repoNetworks.deleteById(id);
    }
 
    @Override
-   public Network getByName(String name) {
+   public Network findByName(String name) {
     List<Network> networksList = (List<Network>) repoNetworks.findAll();
     for (Network network : networksList) {
         if (network.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase())) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import com.mrando.azucardj.model.Artist;
+import com.mrando.azucardj.service.Interfaces.IArtistsServices;
 
 @Service
 public class ArtistsServices implements IArtistsServices {
@@ -54,7 +55,7 @@ public class ArtistsServices implements IArtistsServices {
     }
 
     @Override
-    public Artist searchById(Integer id) {
+    public Artist findById(Integer id) {
         for ( Artist art : artistsMocka) {
 			if (art.getId().equals(id))
 			    return art;
@@ -63,7 +64,7 @@ public class ArtistsServices implements IArtistsServices {
     }
 
     @Override
-    public Artist searchByName(String name) {
+    public Artist findByName(String name) {
         for ( Artist art : artistsMocka) {
 			if (art.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase()))
 			    return art;
@@ -72,7 +73,7 @@ public class ArtistsServices implements IArtistsServices {
     }
 
     @Override
-    public List<Artist> searchByGenre(Integer idGenre) {
+    public List<Artist> findByGenre(Integer idGenre) {
         List<Artist> artistsByGenre = new java.util.LinkedList<Artist>();
         for ( Artist art : artistsMocka) {
 			if (art.getGenre().equals(idGenre))

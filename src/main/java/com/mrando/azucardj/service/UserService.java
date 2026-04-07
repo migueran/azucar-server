@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mrando.azucardj.model.User;
 import com.mrando.azucardj.repository.UserRepository;
+import com.mrando.azucardj.service.Interfaces.IUserService;
 
 @Service
 public class UserService implements IUserService {

@@ -18,27 +18,27 @@ public class VideosController {
     private VideosServices videoService;
 
     @GetMapping
-    public List<Video> fetchAllVideos() {
+    public List<Video> fetch() {
         return videoService.fetch();
     }
 
     @GetMapping("/{id}")
-    public Video getVideoById(@PathVariable Integer id) {
-        return videoService.searchById(id);
+    public Video getById(@PathVariable Integer id) {
+        return videoService.findById(id);
     }
 
     @GetMapping("/name/{name}")
-    public Video getMethodName(@PathVariable String name, Model model) {
-        return videoService.searchByName(name);
+    public Video getByName(@PathVariable String name, Model model) {
+        return videoService.findByName(name);
     }
 
     @PostMapping
-    public void saveVideo(@RequestBody Video video) {
+    public void save(@RequestBody Video video) {
         videoService.save(video);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteVideoById(@PathVariable Integer id) {
-        videoService.deleteById(id);
+    public void delete(@PathVariable Integer id) {
+        videoService.delete(id);
     }
 }

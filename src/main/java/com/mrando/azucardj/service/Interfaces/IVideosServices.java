@@ -1,4 +1,4 @@
-package com.mrando.azucardj.service;
+package com.mrando.azucardj.service.Interfaces;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import com.mrando.azucardj.model.Video;
 public interface IVideosServices {
     List<Video> fetch();
     void save(Video videoUrl);
-    Video searchById(Integer idVideo);
-    Video searchByName(String name);
-    void deleteById(Integer id);
+    Video findById(Integer idVideo);
+    Video findByName(String name);
+    void delete(Integer id);
 }

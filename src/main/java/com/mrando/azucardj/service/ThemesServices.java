@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.mrando.azucardj.model.Theme;
+import com.mrando.azucardj.service.Interfaces.IThemesServices;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -55,7 +57,7 @@ public class ThemesServices implements IThemesServices {
     }
 
     @Override
-    public Theme searchById(Integer idTheme) {
+    public Theme findById(Integer idTheme) {
         for (Theme theme : ThemesMocka) {
             if (theme.getId().equals(idTheme)) {
                 return theme;
@@ -65,7 +67,7 @@ public class ThemesServices implements IThemesServices {
     }
 
     @Override
-    public List<Theme> searchByGenre(Integer idGenre) {
+    public List<Theme> findByGenre(Integer idGenre) {
         List<Theme> themesByGenre = new LinkedList<Theme>();
         for (Theme theme : ThemesMocka) {
             if (theme.getGenre() == idGenre) {
@@ -77,7 +79,7 @@ public class ThemesServices implements IThemesServices {
     }
 
     @Override
-    public List<Theme> searchByArtist(Integer idArtist) {
+    public List<Theme> findByArtist(Integer idArtist) {
         List<Theme> themesByArtist = new LinkedList<Theme>();
         for (Theme theme : ThemesMocka) {
             if (theme.getArtist() == idArtist) {
@@ -88,7 +90,7 @@ public class ThemesServices implements IThemesServices {
     }
 
     @Override
-    public List<Theme> searchByName(String name) {
+    public List<Theme> findByName(String name) {
         List<Theme> themesByName = new LinkedList<Theme>();
         for (Theme theme : ThemesMocka) {
             if (theme.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase())) {

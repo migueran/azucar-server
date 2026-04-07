@@ -17,24 +17,24 @@ public class DjListsController {
     private DjListServices DjListServices;
 
     @GetMapping
-    public List<DjList> fetchLists() {
+    public List<DjList> fetch() {
         return DjListServices.fetch();
     }
 
     @PostMapping
-    public void saveDjList(@RequestBody DjList djList) {
+    public void save(@RequestBody DjList djList) {
         DjListServices.save(djList);
     }
 
     @GetMapping("/{id}")
-    public DjList getDjListById(@PathVariable Integer id, Model model) {
+    public DjList getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return DjListServices.searchById(id);
+        return DjListServices.findById(id);
     }
 
     @GetMapping("/owner/{idOwner}")
-    public List<DjList> getDjListByOwner(@PathVariable Integer idOwner, Model model) {
+    public List<DjList> getByOwner(@PathVariable Integer idOwner, Model model) {
         model.addAttribute("idOwner", idOwner);
-        return DjListServices.searchByOwner(idOwner);
+        return DjListServices.findByOwner(idOwner);
     }
 }

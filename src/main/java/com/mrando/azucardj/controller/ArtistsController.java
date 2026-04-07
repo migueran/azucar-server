@@ -18,31 +18,31 @@ public class ArtistsController {
     private ArtistsServices artistsServices;
 
     @GetMapping
-    public List<Artist> fetchArtists() {
+    public List<Artist> fetch() {
         return artistsServices.fetch();
     }
 
     @PostMapping
-    public void saveArtist(@RequestBody Artist artist) {
+    public void save(@RequestBody Artist artist) {
         artistsServices.save(artist);
     }
 
     @GetMapping("/{id}")
-    public Artist getArtistById(@PathVariable Integer id, Model model) {
+    public Artist getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return artistsServices.searchById(id);
+        return artistsServices.findById(id);
     }
 
     @GetMapping("/name/{name}")
-    public Artist getArtistByName(@PathVariable String name, Model model) {
+    public Artist getByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
-        return artistsServices.searchByName(name);
+        return artistsServices.findByName(name);
     }
 
     @GetMapping("/genero/{idGenre}")
-    public List<Artist> getArtistByGenre(@PathVariable Integer idGenre, Model model) {
+    public List<Artist> getByGenre(@PathVariable Integer idGenre, Model model) {
         model.addAttribute("idGenre", idGenre);
-        return artistsServices.searchByGenre(idGenre);
+        return artistsServices.findByGenre(idGenre);
     }
 
 }

@@ -16,23 +16,23 @@ public class ContactsController {
     private ContactsServices contactsServices;
 
     @GetMapping
-    public List<Contact> fetchContacts() {
+    public List<Contact> fetch() {
         return contactsServices.fetch();
     }
 
     @PostMapping
-    public void saveContact(@RequestBody Contact contact) {
+    public void save(@RequestBody Contact contact) {
         contactsServices.save(contact);
     }
 
     @PutMapping("/{id}")
-    public Contact updateContactById(@PathVariable Integer id, @RequestBody Contact contact) {
-        return contactsServices.updateById(id, contact);
+    public Contact update(@PathVariable Integer id, @RequestBody Contact contact) {
+        return contactsServices.update(id, contact);
     }
 
     @GetMapping("/{id}")
-    public Contact getContactById(@PathVariable Integer id) {
-        return contactsServices.searchById(id);
+    public Contact getById(@PathVariable Integer id) {
+        return contactsServices.findById(id);
     }
 
 }

@@ -3,6 +3,8 @@ package com.mrando.azucardj.service;
 import java.util.LinkedList;
 import java.util.List;
 import com.mrando.azucardj.model.Item;
+import com.mrando.azucardj.service.Interfaces.IItemsServices;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -85,7 +87,7 @@ public class ItemsServices implements IItemsServices {
     }
 
     @Override
-    public Item searchById(Integer idItem) {
+    public Item findById(Integer idItem) {
         for (Item item : itemsMocka) {
             if (item.getId() == idItem) {
                 return item;
@@ -95,7 +97,7 @@ public class ItemsServices implements IItemsServices {
     }
 
     @Override
-    public List<Item> searchByOwner(Integer idOwner) {
+    public List<Item> findByOwner(Integer idOwner) {
         List<Item> itemsByOwner = new LinkedList<Item>();
         for (Item item : itemsMocka) {
             if (item.getIdOwner() == idOwner) {
@@ -106,7 +108,7 @@ public class ItemsServices implements IItemsServices {
     }
 
     @Override
-    public List<Item> searchByGenre(Integer idGenre) {
+    public List<Item> findByGenre(Integer idGenre) {
         List<Item> itemsByGenre = new LinkedList<Item>();
         for (Item item : itemsMocka) {
             if (item.getIdTheme() == idGenre) {
@@ -117,7 +119,7 @@ public class ItemsServices implements IItemsServices {
     }
 
     @Override
-    public List<Item> searchByTheme(Integer idTheme) {
+    public List<Item> findByTheme(Integer idTheme) {
         List<Item> itemsByTheme = new LinkedList<Item>();
         for (Item item : itemsMocka) {
             if (item.getIdTheme() == idTheme) {
