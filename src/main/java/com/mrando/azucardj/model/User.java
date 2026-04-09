@@ -1,10 +1,13 @@
 package com.mrando.azucardj.model;
 
 import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,14 +16,17 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String name;
-  private String last_name;
   private String email;
   private String username;
   private String password;
   private Integer status;
-  private LocalDateTime created_at;
-  private LocalDateTime updated_at;
+  @Column(name = "created_at")
+  private LocalDateTime createdAt;
+  @Column(name = "updated_at")
+  private LocalDateTime updatedAt;
+  @OneToMany(targetEntity = Role.class, mappedBy = "user")
+  @Column(name = "id_role")
+  private Integer role;
 
   public Integer getId() {
     return id;
@@ -28,22 +34,6 @@ public class User {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getLastName() {
-    return last_name;
-  }
-
-  public void setLastName(String lastName) {
-    this.last_name = lastName;
   }
 
   public String getEmail() {
@@ -94,17 +84,23 @@ public class User {
   //   this.updated_at = updated_at;
   // }
 
+  public void setRole(Integer role) {
+    this.role = role;
+  }
+
+  public Integer getRole() {
+    return role;
+  }
+
   public String toString() {
     return "User{" +
       "id=" + id +
-      ", name='" + name + '\'' +
-      ", last_name='" + last_name + '\'' +
       ", email='" + email + '\'' +
       ", username='" + username + '\'' +
       ", password='" + password + '\'' +
       ", status=" + status +
-      ", created_at='" + created_at + '\'' +
-      ", updated_at='" + updated_at + '\'' +
+      ", created_at='" + createdAt + '\'' +
+      ", updated_at='" + updatedAt + '\'' +
       '}';
   }
 

@@ -1,25 +1,31 @@
 package com.mrando.azucardj.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Themes")
 public class Theme {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
-  private Integer idVideo;
-  private Integer idArtist;
-  private Integer idGenre;
-
-  public Theme(
-    Integer id,
-    Integer idVideo,
-    String name,
-    Integer idArtist,
-    Integer idGenre
-  ) {
-    this.id = id;
-    this.idVideo = idVideo;
-    this.name = name;
-    this.idArtist = idArtist;
-    this.idGenre = idGenre;
-  }
+  @OneToOne
+  @JoinColumn(name = "id_video")
+  private Video video;
+  // @OneToOne
+  // @JoinColumn(name = "id_artist")
+  @Column(name = "id_artist")
+  private Integer artist;
+  // @OneToOne
+  // @JoinColumn(name = "id_genre")
+  private Integer genre;
 
   public Integer getId() {
     return id;
@@ -30,11 +36,7 @@ public class Theme {
   }
 
   public Integer getVideo() {
-    return idVideo;
-  }
-
-  public void setUrl(Integer idVideo) {
-    this.idVideo = idVideo;
+    return video.getId();
   }
 
   public String getName() {
@@ -46,28 +48,28 @@ public class Theme {
   }
 
   public Integer getArtist() {
-    return idArtist;
+    return artist;
   }
 
   public void setArtist(Integer idArtist) {
-    this.idArtist = idArtist;
+    this.artist = idArtist;
   }
 
   public Integer getGenre() {
-    return idGenre;
+    return genre;
   }
 
   public void setGenre(Integer idGenre) {
-    this.idGenre = idGenre;
+    this.genre = idGenre;
   }
 
   public String toString() {
     return "Theme{" +
       "id=" + id +
-      ", idVideo=" + idVideo +
+      ", idVideo=" + video.getId() +
       ", name='" + name + '\'' +
-      ", idArtist=" + idArtist +
-      ", idGenre=" + idGenre +
+      ", idArtist=" + artist +
+      ", idGenre=" + genre +
       '}';
   }
 

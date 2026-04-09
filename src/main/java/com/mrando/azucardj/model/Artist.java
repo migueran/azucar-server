@@ -1,19 +1,22 @@
 package com.mrando.azucardj.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.OneToOne;
 
+@Entity
+@Table(name = "Artists")
 public class Artist {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
-  private Integer idGenre;
-
-  public Artist(
-    Integer id,
-    String name,
-    Integer idGenre
-  ) {
-    this.id = id;
-    this.name = name;
-    this.idGenre = idGenre;
-  }
+  // @OneToOne
+  // @JoinColumn(name = "id_genre")
+  private Integer genre;
 
   public Integer getId() {
     return id;
@@ -31,19 +34,19 @@ public class Artist {
     this.name = name;
   }
 
-  public void setGenre(Integer idGenre) {
-    this.idGenre = idGenre;
+  public void setGenre(Integer genre) {
+    this.genre = genre;
   }
 
   public Integer getGenre() {
-    return idGenre;
+    return genre;
   }
 
   public String toString() {
     return "Artist{" +
       "id=" + id +
       ", name='" + name + '\'' +
-      ", idGenre=" + idGenre +
+      ", idGenre=" + genre +
       '}';
   }
 }

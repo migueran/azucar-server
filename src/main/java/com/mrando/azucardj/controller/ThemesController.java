@@ -1,6 +1,7 @@
 package com.mrando.azucardj.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.mrando.azucardj.model.Theme;
 import com.mrando.azucardj.service.ThemesServices;
@@ -27,7 +28,7 @@ public class ThemesController {
     }
 
     @GetMapping("/{id}")
-    public Theme getById(@PathVariable Integer id, Model model) {
+    public Optional<Theme> getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
         return themesServices.findById(id);
     }

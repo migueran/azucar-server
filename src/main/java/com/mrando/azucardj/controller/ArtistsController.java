@@ -3,6 +3,7 @@ package com.mrando.azucardj.controller;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.mrando.azucardj.model.Artist;
 import com.mrando.azucardj.service.ArtistsServices;
@@ -28,13 +29,13 @@ public class ArtistsController {
     }
 
     @GetMapping("/{id}")
-    public Artist getById(@PathVariable Integer id, Model model) {
+    public Optional<Artist> getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
         return artistsServices.findById(id);
     }
 
     @GetMapping("/name/{name}")
-    public Artist getByName(@PathVariable String name, Model model) {
+    public Optional<Artist> getByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
         return artistsServices.findByName(name);
     }

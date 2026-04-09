@@ -4,22 +4,29 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-// Clase que representa una Djlist de reproducción de música. Contiene información sobre el nombre de la Djlist, su descripción, el usuario que la creó y las canciones que contiene.
-public class DjList {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+// Clase que representa una Djlist de reproducción de música. Contiene información sobre el nombre de la Djlist, su descripción, el usuario que la creó y las canciones que contiene.
+@Entity
+@Table(name = "DjLists")
+public class DjList {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
-  private Integer idOwner;
+  // @OneToOne
+  // @JoinColumn(name = "id_owner")
+  private Integer owner;
+  @Column(name = "init_date")
   private LocalDateTime initDate;
   private List<Integer> items;
-
-  public DjList(Integer id, String name, Integer idOwner, ArrayList<Integer> idItems) {
-    this.id = id;
-    this.name = name;
-    this.idOwner = idOwner;
-    this.initDate = LocalDateTime.now();
-    this.items = idItems;
-  }
 
   public Integer getId() {
     return id;
@@ -38,11 +45,11 @@ public class DjList {
   }
 
   public Integer getidOwner() {
-    return idOwner;
+    return owner;
   }
 
-  public void setidOwner(Integer idOwner) {
-    this.idOwner = idOwner;
+  public void setidOwner(Integer owner) {
+    this.owner = owner;
   }
 
   public LocalDateTime getInitDate() {
@@ -68,7 +75,7 @@ public class DjList {
   public String toString() {
     return "DjList{" +
       "id=" + id +
-      ", idOwner=" + idOwner +
+      ", idOwner=" + owner +
       ", initDate=" + initDate +
       ", items=" + items +
       '}';

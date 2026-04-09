@@ -1,25 +1,30 @@
 package com.mrando.azucardj.model;
 
-public class Item {
-  private Integer id;
-  private Integer initTime;
-  private Integer endTime;
-  private Integer idOwner;
-  private Integer idTheme;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
-  public Item(
-    Integer id,
-    Integer initTime,
-    Integer endTime,
-    Integer idOwner,
-    Integer idTheme
-  ) {
-    this.id = id;
-    this.initTime = initTime;
-    this.endTime = endTime;
-    this.idOwner = idOwner;
-    this.idTheme = idTheme;
-  }
+@Entity
+@Table(name = "Items")
+public class Item {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+  @Column(name = "init_time")
+  private Integer initTime; //LocalDate
+  @Column(name = "end_time")
+  private Integer endTime; //LocalDate
+  // @OneToOne
+  // @JoinColumn(name = "id_owner")
+  private Integer owner;
+  // @OneToOne
+  // @JoinColumn(name = "id_theme")
+  private Integer theme;
 
   public Integer getId() {
     return id;
@@ -46,19 +51,19 @@ public class Item {
   }
 
   public Integer getIdOwner() {
-    return idOwner;
+    return owner;
   }
 
   public void setidOwner(Integer idOwner) {
-    this.idOwner = idOwner;
+    this.owner = idOwner;
   }
 
   public Integer getIdTheme() {
-    return idTheme;
+    return theme;
   }
 
   public void setIdTheme(Integer idTheme) {
-    this.idTheme = idTheme;
+    this.theme = idTheme;
   }
 
   public String toString() {
@@ -66,8 +71,8 @@ public class Item {
       "id=" + id +
       ", initTime=" + initTime +
       ", endTime=" + endTime +
-      ", idOwner=" + idOwner +
-      ", idTheme=" + idTheme +
+      ", idOwner=" + owner +
+      ", idTheme=" + theme +
       '}';
   }
 }

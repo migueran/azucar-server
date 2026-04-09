@@ -1,7 +1,9 @@
 package com.mrando.azucardj.service;
 
+import com.mrando.azucardj.repository.ThemesRepository;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import com.mrando.azucardj.model.Theme;
 import com.mrando.azucardj.service.Interfaces.IThemesServices;
@@ -11,93 +13,75 @@ import org.springframework.stereotype.Service;
 @Service
 public class ThemesServices implements IThemesServices {
 
-    private List<Theme> ThemesMocka = null;
-    ThemesServices() {
-        ThemesMocka = new LinkedList<Theme>();
-        ThemesMocka.add( new Theme(
-            301, 401, "Bohemian Rhapsody", 201, 501
-        ));
-        ThemesMocka.add(new Theme(
-            302, 402, "Imagine", 202, 502)
-        );
-        ThemesMocka.add(new Theme(
-            303, 403, "Hotel California", 203, 503)
-        );
-        ThemesMocka.add(new Theme(
-            304, 404, "Stairway to Heaven", 204, 504)
-        );
-        ThemesMocka.add(new Theme(
-            305, 405, "Smells Like Teen Spirit", 205, 505)
-        );
-        ThemesMocka.add(new Theme(
-            306, 406, "Billie Jean", 206, 506)
-        );
-        ThemesMocka.add(new Theme(
-            307, 407, "Like a Rolling Stone", 207, 507)
-        );
-        ThemesMocka.add(new Theme(
-            308, 408, "Hey Jude", 208, 508)
-        );
-        ThemesMocka.add(new Theme(
-            309, 409, "Purple Rain", 209, 509)
-        );
-        ThemesMocka.add(new Theme(
-            310, 410, "Wonderwall", 210, 510)
-        );
-    }
+    // private List<Theme> ThemesMocka = null;
+    // ThemesServices() {
+    //     ThemesMocka = new LinkedList<Theme>();
+    //     ThemesMocka.add( new Theme(
+    //         301, 401, "Bohemian Rhapsody", 201, 501
+    //     ));
+    //     ThemesMocka.add(new Theme(
+    //         302, 402, "Imagine", 202, 502)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         303, 403, "Hotel California", 203, 503)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         304, 404, "Stairway to Heaven", 204, 504)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         305, 405, "Smells Like Teen Spirit", 205, 505)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         306, 406, "Billie Jean", 206, 506)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         307, 407, "Like a Rolling Stone", 207, 507)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         308, 408, "Hey Jude", 208, 508)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         309, 409, "Purple Rain", 209, 509)
+    //     );
+    //     ThemesMocka.add(new Theme(
+    //         310, 410, "Wonderwall", 210, 510)
+    //     );
+    // }
+
+    private final ThemesRepository themesRepository;
+
+  ThemesServices(ThemesRepository themesRepository) {
+    this.themesRepository = themesRepository;
+  }
 
     @Override
     public List<Theme> fetch() {
-        return ThemesMocka;
+        return themesRepository.findAll();
     }
 
     @Override
     public void save(Theme theme) {
-        ThemesMocka.add(theme);
+        themesRepository.save(theme);
     }
 
     @Override
-    public Theme findById(Integer idTheme) {
-        for (Theme theme : ThemesMocka) {
-            if (theme.getId().equals(idTheme)) {
-                return theme;
-            }
-        }
-        return null;
+    public Optional<Theme> findById(Integer idTheme) {
+        return themesRepository.findById(idTheme);
     }
 
     @Override
     public List<Theme> findByGenre(Integer idGenre) {
-        List<Theme> themesByGenre = new LinkedList<Theme>();
-        for (Theme theme : ThemesMocka) {
-            if (theme.getGenre() == idGenre) {
-                themesByGenre.add(theme);
-            }
-            // System.out.println(theme);
-        }
-        return themesByGenre;
+        return themesRepository.findByGenre(idGenre);
     }
 
     @Override
     public List<Theme> findByArtist(Integer idArtist) {
-        List<Theme> themesByArtist = new LinkedList<Theme>();
-        for (Theme theme : ThemesMocka) {
-            if (theme.getArtist() == idArtist) {
-                themesByArtist.add(theme);
-            }
-        }
-        return themesByArtist;
+        return themesRepository.findByArtist(idArtist);
     }
 
     @Override
     public List<Theme> findByName(String name) {
-        List<Theme> themesByName = new LinkedList<Theme>();
-        for (Theme theme : ThemesMocka) {
-            if (theme.getName().toLowerCase().equals(name.replace("-", " ").toLowerCase())) {
-                themesByName.add(theme);
-            }
-        }
-        return themesByName;
+        return themesRepository.findByName(name);
     }
 
 
