@@ -20,9 +20,9 @@ public class DatabaseWebSecurity {
   UserDetailsManager usersDbManager( DataSource dataSource) {
     JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
     users.setUsersByUsernameQuery("SELECT username, password, status FROM users WHERE username = ?");
-    users.setAuthoritiesByUsernameQuery("select u.username, p.profile from UsersProfiles up " + 
+    users.setAuthoritiesByUsernameQuery("select u.username, p.role from UsersRoles ur " + 
                                         "inner join Users u on u.id = u.id " + 
-                                        "inner join Profiles p on ur.id = p.id " + 
+                                        "inner join Roles r on ur.id = r.id " + 
                                         "where u.username = ?");
     return users;
   }

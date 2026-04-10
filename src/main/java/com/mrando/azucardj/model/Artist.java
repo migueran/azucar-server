@@ -1,11 +1,17 @@
 package com.mrando.azucardj.model;
+import java.util.List;
+
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-// import jakarta.persistence.JoinColumn;
-// import jakarta.persistence.OneToOne;
 
 @Entity
 @Table(name = "Artists")
@@ -14,9 +20,9 @@ public class Artist {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
-  // @OneToOne
-  // @JoinColumn(name = "id_genre")
-  private Integer genre;
+  @ManyToMany(targetEntity = Genre.class, fetch = FetchType.EAGER)
+  @JoinTable(name = "artist_genre", joinColumns = @JoinColumn(name = "id_artist"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
+  private List<Genre> genre;
 
   public Integer getId() {
     return id;
@@ -34,11 +40,11 @@ public class Artist {
     this.name = name;
   }
 
-  public void setGenre(Integer genre) {
+  public void setGenre(List<Genre> genre) {
     this.genre = genre;
   }
 
-  public Integer getGenre() {
+  public List<Genre> getGenre() {
     return genre;
   }
 

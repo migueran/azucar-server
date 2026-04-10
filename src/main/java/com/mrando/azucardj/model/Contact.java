@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,10 +14,12 @@ public class Contact {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  @OneToOne
-  @JoinColumn(name = "id_network")
+  @ManyToOne(targetEntity = Network.class)
+  @JoinColumn(name = "id_network", referencedColumnName = "id")
   private Network network;
   private String url;
+  @ManyToOne(targetEntity = Profile.class)
+  private Profile profile;
 
   public Integer getId() {
     return id;

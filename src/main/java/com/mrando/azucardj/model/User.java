@@ -1,13 +1,16 @@
 package com.mrando.azucardj.model;
 
-import java.time.LocalDateTime;
-
+import java.time.LocalDate;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,13 +23,16 @@ public class User {
   private String username;
   private String password;
   private Integer status;
-  @Column(name = "created_at")
-  private LocalDateTime createdAt;
-  @Column(name = "updated_at")
-  private LocalDateTime updatedAt;
-  @OneToMany(targetEntity = Role.class, mappedBy = "user")
+  @ManyToOne(targetEntity = Role.class, fetch = FetchType.LAZY)
   @Column(name = "id_role")
-  private Integer role;
+  private Role role;
+  @OneToOne(targetEntity = Profile.class, cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "id_profile", referencedColumnName = "id")
+  private Profile profile;
+  @Column(name = "created_at", columnDefinition = "DATE")
+  private LocalDate createdAt;
+  @Column(name = "updated_at", columnDefinition = "DATE")
+  private LocalDate updatedAt;
 
   public Integer getId() {
     return id;
@@ -68,6 +74,24 @@ public class User {
     this.status = status;
   }
 
+  public void setRole(Role role) {
+    this.role = role;
+  }
+
+  public Role getRole() {
+    return role;
+  }
+
+  public void setProfile(Profile profile) {
+    this.profile = profile;
+  }
+
+  public Profile getProfile() {
+    return profile;
+  }
+
+
+
   // public String getCreated_at() {
   //   return created_at;
   // }
@@ -84,14 +108,6 @@ public class User {
   //   this.updated_at = updated_at;
   // }
 
-  public void setRole(Integer role) {
-    this.role = role;
-  }
-
-  public Integer getRole() {
-    return role;
-  }
-
   public String toString() {
     return "User{" +
       "id=" + id +
@@ -99,6 +115,7 @@ public class User {
       ", username='" + username + '\'' +
       ", password='" + password + '\'' +
       ", status=" + status +
+      ", role=" + role.getRole() +
       ", created_at='" + createdAt + '\'' +
       ", updated_at='" + updatedAt + '\'' +
       '}';
