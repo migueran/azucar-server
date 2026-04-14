@@ -1,6 +1,7 @@
 package com.mrando.azucardj.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -23,9 +25,12 @@ public class User {
   private String username;
   private String password;
   private Integer status;
-  @ManyToOne(targetEntity = Role.class, fetch = FetchType.LAZY)
-  @Column(name = "id_role")
-  private Role role;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "UsersRoles",
+    joinColumns = @JoinColumn(name = "id_user"),
+    inverseJoinColumns = @JoinColumn(name = "id_role")
+  )
+	private List<Role> roles;
   @OneToOne(targetEntity = Profile.class, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "id_profile", referencedColumnName = "id")
   private Profile profile;
@@ -74,12 +79,12 @@ public class User {
     this.status = status;
   }
 
-  public void setRole(Role role) {
-    this.role = role;
+  public void setRole(List<Role> roles) {
+    this.roles = roles;
   }
 
-  public Role getRole() {
-    return role;
+  public List<Role> getRole() {
+    return roles;
   }
 
   public void setProfile(Profile profile) {
@@ -115,7 +120,7 @@ public class User {
       ", username='" + username + '\'' +
       ", password='" + password + '\'' +
       ", status=" + status +
-      ", role=" + role.getRole() +
+      ", role=" + roles +
       ", created_at='" + createdAt + '\'' +
       ", updated_at='" + updatedAt + '\'' +
       '}';

@@ -1,5 +1,7 @@
 package com.mrando.azucardj.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -15,8 +17,8 @@ public class Network {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
-  @OneToMany(targetEntity = Contact.class, fetch = FetchType.LAZY, mappedBy = "id_network") //mapped
-  private Contact contact;
+  @OneToMany(targetEntity = Contact.class, fetch = FetchType.LAZY, mappedBy = "network")
+  private List<Contact> contact;
 
   public Integer getId() {
     return id;

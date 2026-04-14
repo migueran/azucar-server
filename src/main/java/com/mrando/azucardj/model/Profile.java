@@ -8,7 +8,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -21,8 +20,7 @@ public class Profile {
   private String name;
   @Column(name = "last_name")
   private String lastName;
-  @OneToMany(targetEntity = Contact.class, fetch = FetchType.LAZY, mappedBy = "profile") //mapped
-  @JoinColumn(name = "id_contact", referencedColumnName = "id")
+  @OneToMany(targetEntity = Contact.class, fetch = FetchType.LAZY, mappedBy = "profile")
   private List<Contact> contact;
 
   public void setId(Integer id) {

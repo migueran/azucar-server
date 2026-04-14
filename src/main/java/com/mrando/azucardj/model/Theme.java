@@ -21,8 +21,8 @@ public class Theme {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
-  @OneToOne(targetEntity = Video.class, mappedBy = "Themes", cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "id_video")
+  @OneToOne(targetEntity = Video.class, cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "id_video", referencedColumnName = "id")
   private Video video;
   @ManyToMany(targetEntity = Artist.class, fetch = FetchType.EAGER)
   @JoinTable(name = "theme_artist", joinColumns = @JoinColumn(name = "id_theme"), inverseJoinColumns = @JoinColumn(name = "id_artist"))

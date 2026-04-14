@@ -13,7 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -30,7 +29,7 @@ public class Item {
   @ManyToMany(targetEntity = User.class, fetch = FetchType.EAGER)
   @JoinTable(name = "item_owner", joinColumns = @JoinColumn(name = "id_owner"), inverseJoinColumns = @JoinColumn(name = "id_artist"))
   private List<User> owner;
-  @OneToOne(targetEntity = Theme.class, mappedBy = "items", cascade = CascadeType.PERSIST)
+  @OneToOne(targetEntity = Theme.class, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "id_theme")
   private Integer theme;
   @ManyToOne(targetEntity = DjList.class)

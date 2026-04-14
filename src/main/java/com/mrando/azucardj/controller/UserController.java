@@ -25,8 +25,8 @@ public class UserController {
     }
 
     @GetMapping("/name/{name}")
-    public User findByName(@PathVariable String name) {
-        return userService.findByName(name);
+    public String findByName(@PathVariable String name) {
+        return name;
     }
 
     @GetMapping("/disabled")
