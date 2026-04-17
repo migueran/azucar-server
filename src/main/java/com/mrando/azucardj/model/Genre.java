@@ -17,17 +17,17 @@ import jakarta.persistence.Table;
 public class Genre {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   private String name;
   @ManyToMany(targetEntity = Artist.class, fetch = FetchType.LAZY)
   @JoinTable(name = "artist_genre", joinColumns = @JoinColumn(name = "id_genre"), inverseJoinColumns = @JoinColumn(name = "id_artist"))
   private List<Artist> artists;
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 

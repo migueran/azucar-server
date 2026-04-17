@@ -12,18 +12,18 @@ import jakarta.persistence.Table;
 public class Contact {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   @ManyToOne(targetEntity = Network.class)
   private Network network;
   private String url;
   @ManyToOne(targetEntity = Profile.class)
   private Profile profile;
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 

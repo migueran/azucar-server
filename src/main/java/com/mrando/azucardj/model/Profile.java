@@ -16,18 +16,18 @@ import jakarta.persistence.Table;
 public class Profile {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   private String name;
   @Column(name = "last_name")
   private String lastName;
   @OneToMany(targetEntity = Contact.class, fetch = FetchType.LAZY, mappedBy = "profile")
   private List<Contact> contact;
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 

@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 public class DjList {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   private String name;
   @ManyToMany(targetEntity = User.class, fetch = FetchType.LAZY)
   @JoinTable(name = "djlist_owner", joinColumns = @JoinColumn(name = "id_djlist"), inverseJoinColumns = @JoinColumn(name = "id_owner"))
@@ -32,11 +32,11 @@ public class DjList {
   @OneToMany(targetEntity = Item.class, cascade = CascadeType.PERSIST, mappedBy = "djLists")
   private List<Item> items;
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 

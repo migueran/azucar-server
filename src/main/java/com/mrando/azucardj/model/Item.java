@@ -21,41 +21,41 @@ import jakarta.persistence.Table;
 public class Item {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   @Column(name = "init_time")
-  private Integer initTime;
+  private int initTime;
   @Column(name = "end_time")
-  private Integer endTime;
+  private int endTime;
   @ManyToMany(targetEntity = User.class, fetch = FetchType.EAGER)
   @JoinTable(name = "item_owner", joinColumns = @JoinColumn(name = "id_owner"), inverseJoinColumns = @JoinColumn(name = "id_artist"))
   private List<User> owner;
   @OneToOne(targetEntity = Theme.class, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "id_theme")
-  private Integer theme;
+  private Theme theme;
   @ManyToOne(targetEntity = DjList.class)
   private DjList djLists;
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public void setInitTime(Integer initTime) {
+  public void setInitTime(int initTime) {
     this.initTime = initTime;
   }
 
-  public Integer getInitTime(Integer initTime) {
+  public int getInitTime() {
     return initTime;
   }
 
-  public void setEndTime(Integer endTime) {
+  public void setEndTime(int endTime) {
     this.endTime = endTime;
   }
 
-  public Integer getEndTime(Integer endTime) {
+  public int getEndTime() {
     return endTime;
   }
 
@@ -67,11 +67,11 @@ public class Item {
     this.owner = owner;
   }
 
-  public Integer getIdTheme() {
+  public Theme getIdTheme() {
     return theme;
   }
 
-  public void setIdTheme(Integer idTheme) {
+  public void setIdTheme(Theme idTheme) {
     this.theme = idTheme;
   }
 

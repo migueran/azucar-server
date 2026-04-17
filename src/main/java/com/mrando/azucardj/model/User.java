@@ -20,11 +20,11 @@ import jakarta.persistence.Table;
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   private String email;
   private String username;
   private String password;
-  private Integer status;
+  private int status;
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "UsersRoles",
     joinColumns = @JoinColumn(name = "id_user"),
@@ -39,11 +39,11 @@ public class User {
   @Column(name = "updated_at", columnDefinition = "DATE")
   private LocalDate updatedAt;
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 
@@ -71,11 +71,11 @@ public class User {
     this.password = password;
   }
 
-  public Integer getStatus() {
+  public int getStatus() {
     return status;
   }
 
-  public void setStatus(Integer status) {
+  public void setStatus(int status) {
     this.status = status;
   }
 

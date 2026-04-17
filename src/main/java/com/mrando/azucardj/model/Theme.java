@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 public class Theme {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   private String name;
   @OneToOne(targetEntity = Video.class, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "id_video", referencedColumnName = "id")
@@ -31,11 +31,11 @@ public class Theme {
   @JoinTable(name = "theme_genre", joinColumns = @JoinColumn(name = "id_theme"), inverseJoinColumns = @JoinColumn(name = "id_genre"))
   private List<Genre> genre;
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 

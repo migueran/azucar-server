@@ -11,13 +11,13 @@ import jakarta.persistence.Table;
 public class Role {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
   private String role;
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
