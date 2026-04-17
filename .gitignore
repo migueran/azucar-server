@@ -30,7 +30,7 @@ build/
 !**/src/test/**/build/
 
 ### specs
-openspec/
+# openspec/
 
 ### VS Code ###
 .vscode/
