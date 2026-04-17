@@ -30,6 +30,7 @@ public class DatabaseWebSecurity {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests((authz) -> authz
+        .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
         .requestMatchers("/**").permitAll()
         // .requestMatchers("/**").hasAuthority("admin")
         // .requestMatchers("/**").hasAuthority("writer")
