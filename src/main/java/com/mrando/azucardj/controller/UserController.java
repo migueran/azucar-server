@@ -47,12 +47,12 @@ public class UserController {
         return userService.fetchDisabled();
     }
 
-    @PostMapping
-    @Operation(summary = "Crear usuario", description = "Registra un nuevo usuario")
-    @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
-    public User create(@RequestBody User user) {
-        return userService.save(user);
-    }
+    // @PostMapping
+    // @Operation(summary = "Crear usuario", description = "Registra un nuevo usuario")
+    // @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
+    // public User create(@RequestBody User user) {
+    //     return userService.save(user);
+    // }
 
     @PutMapping("/{id}")
     @Operation(summary = "Actualizar usuario", description = "Actualiza los datos de un usuario dado su ID")

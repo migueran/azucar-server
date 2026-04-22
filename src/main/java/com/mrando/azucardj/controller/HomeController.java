@@ -21,7 +21,7 @@ public class HomeController {
   @Operation(summary = "Bienvenida", description = "Endpoint raíz de la API")
   @ApiResponse(responseCode = "200", description = "API disponible")
   public String Home() {
-      return "hola";
+      return "Azucar Dj";
   }
 
   @GetMapping("/bcrypt/{text}")
