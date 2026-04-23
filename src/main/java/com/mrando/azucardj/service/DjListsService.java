@@ -3,15 +3,16 @@ package com.mrando.azucardj.service;
 import com.mrando.azucardj.repository.DjListRepository;
 import java.util.List;
 import com.mrando.azucardj.model.DjList;
-import com.mrando.azucardj.service.Interfaces.IDjListServices;
+import com.mrando.azucardj.service.Interfaces.IDjListsService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DjListServices implements IDjListServices {
+public class DjListsService implements IDjListsService {
 
     // public List<DjList> djListMocka = null;
-    // public DjListServices() {
+    // public DjListsService() {
     //     djListMocka = new java.util.LinkedList<DjList>();
     //     ArrayList<Integer> items1 = new ArrayList<>(
     //         Arrays.asList(3110,3120,3130,3140,3150,3160,3170,3180,3190,3200)
@@ -23,11 +24,8 @@ public class DjListServices implements IDjListServices {
     //     djListMocka.add( new DjList(2, "other list", 1, items2));
     // }
 
-    private final DjListRepository djListRepository;
-
-  DjListServices(DjListRepository djListRepository) {
-    this.djListRepository = djListRepository;
-  }
+    @Autowired
+    private DjListRepository djListRepository;
 
     @Override
     public List<DjList> fetch() {

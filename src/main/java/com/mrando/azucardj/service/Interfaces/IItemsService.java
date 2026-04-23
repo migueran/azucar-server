@@ -5,7 +5,7 @@ import com.mrando.azucardj.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface IItemsServices {
+public interface IItemsService {
     List<Item> fetch();
     void save(Item item);
     Item findById(Integer idItem);

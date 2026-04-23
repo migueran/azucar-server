@@ -3,7 +3,7 @@ package com.mrando.azucardj.controller;
 import java.util.List;
 
 import com.mrando.azucardj.model.Item;
-import com.mrando.azucardj.service.ItemsServices;
+import com.mrando.azucardj.service.ItemsService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -22,20 +22,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ItemsController {
 
     @Autowired
-    private ItemsServices itemsServices;
+    private ItemsService itemsService;
 
     @GetMapping
     @Operation(summary = "Listar ítems", description = "Retorna todos los ítems registrados")
     @ApiResponse(responseCode = "200", description = "Lista de ítems obtenida exitosamente")
     public List<Item> fetch() {
-        return itemsServices.fetch();
+        return itemsService.fetch();
     }
 
     @PostMapping
     @Operation(summary = "Crear ítem", description = "Registra un nuevo ítem en una DjList")
     @ApiResponse(responseCode = "200", description = "Ítem creado exitosamente")
     public void save(@RequestBody Item item) {
-        itemsServices.save(item);
+        itemsService.save(item);
     }
 
     @GetMapping("/{id}")
@@ -44,7 +44,7 @@ public class ItemsController {
     @ApiResponse(responseCode = "404", description = "Ítem no encontrado")
     public Item getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return itemsServices.findById(id);
+        return itemsService.findById(id);
     }
 
     @GetMapping("/owner/{idOwner}")
@@ -52,7 +52,7 @@ public class ItemsController {
     @ApiResponse(responseCode = "200", description = "Ítems del propietario obtenidos exitosamente")
     public List<Item> getByOwner(@RequestParam Integer idOwner, Model model) {
         model.addAttribute("idOwner", idOwner);
-        return itemsServices.findByOwner(idOwner);
+        return itemsService.findByOwner(idOwner);
     }
 
     @GetMapping("/theme/{idTheme}")
@@ -60,7 +60,7 @@ public class ItemsController {
     @ApiResponse(responseCode = "200", description = "Ítems del tema obtenidos exitosamente")
     public List<Item> getByTheme(@RequestParam Integer idTheme, Model model) {
         model.addAttribute("idTheme", idTheme);
-        return itemsServices.findByTheme(idTheme);
+        return itemsService.findByTheme(idTheme);
     }
 
 }

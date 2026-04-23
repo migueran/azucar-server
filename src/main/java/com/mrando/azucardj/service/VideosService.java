@@ -4,16 +4,16 @@ import java.util.List;
 
 import com.mrando.azucardj.model.Video;
 import com.mrando.azucardj.repository.VideosRepository;
-import com.mrando.azucardj.service.Interfaces.IVideosServices;
+import com.mrando.azucardj.service.Interfaces.IVideosService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VideosServices implements IVideosServices {
+public class VideosService implements IVideosService {
 
     // private List<Video> VideosMocka = null;
-    // VideosServices() {
+    // VideosService() {
         // VideosMocka = new java.util.LinkedList<Video>();
         // VideosMocka.add( new Video(
         //     401, "Bohemian Rhapsody", "https://www.youtube.com/watch?v=fJ9rUzIMcZQ"

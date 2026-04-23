@@ -3,7 +3,7 @@ package com.mrando.azucardj.service.Interfaces;
 import java.util.List;
 import com.mrando.azucardj.model.Network;
 
-public interface INetworksServices {
+public interface INetworksService {
   List<Network> fetch();
   void save(Network network);
   Network findById(Integer idNetwork);

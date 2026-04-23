@@ -3,7 +3,7 @@ package com.mrando.azucardj.service.Interfaces;
 import java.util.List;
 import com.mrando.azucardj.model.Genre;
 
-public interface IGenresServices {
+public interface IGenresService {
     List<Genre> fetch();
     void save(Genre genre);
     Genre findById(Integer idGenre);

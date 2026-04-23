@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.mrando.azucardj.model.Video;
-import com.mrando.azucardj.service.VideosServices;
+import com.mrando.azucardj.service.VideosService;
 
 
 @RestController
@@ -19,7 +19,7 @@ import com.mrando.azucardj.service.VideosServices;
 public class VideosController {
 
     @Autowired
-    private VideosServices videoService;
+    private VideosService videoService;
 
     @GetMapping
     @Operation(summary = "Listar videos", description = "Retorna todos los videos registrados")

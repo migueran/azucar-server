@@ -1,18 +1,23 @@
 package com.mrando.azucardj.service;
 
 import com.mrando.azucardj.repository.ArtistsRepository;
+import com.mrando.azucardj.service.Interfaces.IArtistsService;
+
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mrando.azucardj.model.Artist;
-import com.mrando.azucardj.service.Interfaces.IArtistsServices;
 
 @Service
-public class ArtistsServices implements IArtistsServices {
+public class ArtistsService implements IArtistsService {
+
+    @Autowired
+    private ArtistsRepository artistsRepository;
 
     // public List<Artist> artistsMocka = null;
-    // public ArtistsServices() {
+    // public ArtistsService() {
     //     artistsMocka = new java.util.LinkedList<Artist>();
     //     artistsMocka.add( new Artist(
     //         201, "Queen", 501
@@ -45,12 +50,6 @@ public class ArtistsServices implements IArtistsServices {
     //         210, "Oasis", 510
     //     ));
     // }
-
-    private final ArtistsRepository artistsRepository;
-
-  ArtistsServices(ArtistsRepository artistsRepository) {
-    this.artistsRepository = artistsRepository;
-  }
 
     @Override
     public List<Artist> fetch() {

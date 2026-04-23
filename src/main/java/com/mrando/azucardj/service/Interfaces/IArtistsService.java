@@ -1,14 +1,13 @@
 package com.mrando.azucardj.service.Interfaces;
 
+import com.mrando.azucardj.model.Artist;
 import java.util.List;
 import java.util.Optional;
 
-import com.mrando.azucardj.model.Artist;
-
-public interface IArtistsServices {
+public interface IArtistsService {
     List<Artist> fetch();
     void save(Artist artist);
-    Optional<Artist> findById(Integer idArtist);
+    Optional<Artist> findById(Integer id);
     Optional<Artist> findByName(String name);
     List<Artist> findByGenre(Integer idGenre);
 }

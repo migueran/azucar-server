@@ -13,6 +13,7 @@ public class Role {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String role;
+
   public void setId(int id) {
     this.id = id;
   }

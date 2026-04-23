@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.mrando.azucardj.model.Theme;
-import com.mrando.azucardj.service.ThemesServices;
+import com.mrando.azucardj.service.ThemesService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -19,20 +19,20 @@ import org.springframework.web.bind.annotation.*;
 public class ThemesController {
 
     @Autowired
-    private ThemesServices themesServices;
+    private ThemesService themesService;
 
     @GetMapping
     @Operation(summary = "Listar temas", description = "Retorna todos los temas musicales")
     @ApiResponse(responseCode = "200", description = "Lista de temas obtenida exitosamente")
     public List<Theme> fetch() {
-        return themesServices.fetch();
+        return themesService.fetch();
     }
 
     @PostMapping
     @Operation(summary = "Crear tema", description = "Registra un nuevo tema musical")
     @ApiResponse(responseCode = "200", description = "Tema creado exitosamente")
     public void save(@RequestBody Theme theme) {
-        themesServices.save(theme);
+        themesService.save(theme);
     }
 
     @GetMapping("/{id}")
@@ -41,7 +41,7 @@ public class ThemesController {
     @ApiResponse(responseCode = "404", description = "Tema no encontrado")
     public Optional<Theme> getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return themesServices.findById(id);
+        return themesService.findById(id);
     }
 
     @GetMapping("/name/{name}")
@@ -49,7 +49,7 @@ public class ThemesController {
     @ApiResponse(responseCode = "200", description = "Lista de temas obtenida exitosamente")
     public List<Theme> getByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
-        return themesServices.findByName(name);
+        return themesService.findByName(name);
     }
 
     @GetMapping("/artist/{idArtist}")
@@ -57,7 +57,7 @@ public class ThemesController {
     @ApiResponse(responseCode = "200", description = "Temas del artista obtenidos exitosamente")
     public List<Theme> getByArtist(@PathVariable Integer idArtist, Model model) {
         model.addAttribute("idArtist", idArtist);
-        return themesServices.findByArtist(idArtist);
+        return themesService.findByArtist(idArtist);
     }
 
     @GetMapping("/genre/{idGenre}")
@@ -65,6 +65,6 @@ public class ThemesController {
     @ApiResponse(responseCode = "200", description = "Temas del género obtenidos exitosamente")
     public List<Theme> getByGenre(@PathVariable Integer idGenre, Model model) {
         model.addAttribute("idGenre", idGenre);
-        return themesServices.findByGenre(idGenre);
+        return themesService.findByGenre(idGenre);
     }
 }

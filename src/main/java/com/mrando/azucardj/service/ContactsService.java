@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.mrando.azucardj.model.Contact;
 import com.mrando.azucardj.repository.ContactsRepository;
-import com.mrando.azucardj.service.Interfaces.IContactsServices;
+import com.mrando.azucardj.service.Interfaces.IContactsService;
 
 @Service
-public class ContactsServices implements IContactsServices {
+public class ContactsService implements IContactsService {
 
     @Autowired
     private ContactsRepository repoContacts;

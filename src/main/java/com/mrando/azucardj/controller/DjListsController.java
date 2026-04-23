@@ -3,7 +3,7 @@ package com.mrando.azucardj.controller;
 import java.util.List;
 
 import com.mrando.azucardj.model.DjList;
-import com.mrando.azucardj.service.DjListServices;
+import com.mrando.azucardj.service.DjListsService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -18,20 +18,20 @@ import org.springframework.web.bind.annotation.*;
 public class DjListsController {
 
     @Autowired
-    private DjListServices DjListServices;
+    private DjListsService djListsService;
 
     @GetMapping
     @Operation(summary = "Listar DjLists", description = "Retorna todas las listas de reproducción DJ")
     @ApiResponse(responseCode = "200", description = "Lista obtenida exitosamente")
     public List<DjList> fetch() {
-        return DjListServices.fetch();
+        return djListsService.fetch();
     }
 
     @PostMapping
     @Operation(summary = "Crear DjList", description = "Registra una nueva lista de reproducción DJ")
     @ApiResponse(responseCode = "200", description = "DjList creada exitosamente")
     public void save(@RequestBody DjList djList) {
-        DjListServices.save(djList);
+        djListsService.save(djList);
     }
 
     @GetMapping("/{id}")
@@ -40,7 +40,7 @@ public class DjListsController {
     @ApiResponse(responseCode = "404", description = "DjList no encontrada")
     public DjList getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return DjListServices.findById(id);
+        return djListsService.findById(id);
     }
 
     @GetMapping("/owner/{idOwner}")
@@ -48,6 +48,6 @@ public class DjListsController {
     @ApiResponse(responseCode = "200", description = "Listas del propietario obtenidas exitosamente")
     public List<DjList> getByOwner(@PathVariable Integer idOwner, Model model) {
         model.addAttribute("idOwner", idOwner);
-        return DjListServices.findByOwner(idOwner);
+        return djListsService.findByOwner(idOwner);
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mrando.azucardj.model.User;
 
-public interface IUserService {
+public interface IUsersService {
     public List<User> fetch();
     public User save(User user);
     public User findById(Integer id);

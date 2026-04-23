@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.mrando.azucardj.model.User;
-import com.mrando.azucardj.service.UserService;
+import com.mrando.azucardj.service.UsersService;
 
 @RestController
 @RequestMapping("/users")
@@ -16,13 +16,13 @@ import com.mrando.azucardj.service.UserService;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UsersService usersService;
 
     @GetMapping
     @Operation(summary = "Listar usuarios", description = "Retorna todos los usuarios registrados")
     @ApiResponse(responseCode = "200", description = "Lista de usuarios obtenida exitosamente")
     public List<User> fetch() {
-        return userService.fetch();
+        return usersService.fetch();
     }
 
     @GetMapping("/{id}")
@@ -30,7 +30,7 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Usuario encontrado")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     public User findById(@PathVariable Integer id) {
-        return userService.findById(id);
+        return usersService.findById(id);
     }
 
     @GetMapping("/name/{name}")
@@ -44,14 +44,14 @@ public class UserController {
     @Operation(summary = "Listar usuarios deshabilitados", description = "Retorna todos los usuarios con status deshabilitado")
     @ApiResponse(responseCode = "200", description = "Lista de usuarios deshabilitados obtenida exitosamente")
     public List<User> fetchDisabled() {
-        return userService.fetchDisabled();
+        return usersService.fetchDisabled();
     }
 
     // @PostMapping
     // @Operation(summary = "Crear usuario", description = "Registra un nuevo usuario")
     // @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
     // public User create(@RequestBody User user) {
-    //     return userService.save(user);
+    //     return usersService.save(user);
     // }
 
     @PutMapping("/{id}")
@@ -59,7 +59,7 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Usuario actualizado exitosamente")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     public User update(@PathVariable Integer id, @RequestBody User user) {
-        return userService.update(id, user);
+        return usersService.update(id, user);
     }
 
     @DeleteMapping("/{id}")
@@ -67,7 +67,7 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Usuario eliminado exitosamente")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     public void delete(@PathVariable Integer id) {
-        userService.delete(id);
+        usersService.delete(id);
     }
 
     @PatchMapping("/{id}/disable")
@@ -75,7 +75,7 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Usuario deshabilitado exitosamente")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     public void disable(@PathVariable Integer id) {
-        userService.disable(id);
+        usersService.disable(id);
     }
 
     @PatchMapping("/{id}/enable")
@@ -83,6 +83,6 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Usuario habilitado exitosamente")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     public void enable(@PathVariable Integer id) {
-        userService.enable(id);
+        usersService.enable(id);
     }
 }

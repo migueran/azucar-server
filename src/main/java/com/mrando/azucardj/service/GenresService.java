@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import com.mrando.azucardj.model.Genre;
 import com.mrando.azucardj.repository.GenresRepository;
-import com.mrando.azucardj.service.Interfaces.IGenresServices;
+import com.mrando.azucardj.service.Interfaces.IGenresService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GenresServices implements IGenresServices {
+public class GenresService implements IGenresService {
 
     @Autowired
 	private GenresRepository repoGenres;

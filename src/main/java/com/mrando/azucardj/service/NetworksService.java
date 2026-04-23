@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import com.mrando.azucardj.model.Network;
 import com.mrando.azucardj.repository.NetworksRepository;
-import com.mrando.azucardj.service.Interfaces.INetworksServices;
+import com.mrando.azucardj.service.Interfaces.INetworksService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NetworksServices implements INetworksServices {
+public class NetworksService implements INetworksService {
 
    @Autowired
    private NetworksRepository repoNetworks;
@@ -23,7 +23,7 @@ public class NetworksServices implements INetworksServices {
 
    @Override
    public void save(Network network) {
-    repoNetworks.save(network);
+        repoNetworks.save(network);
    }
 
    @Override
@@ -31,8 +31,8 @@ public class NetworksServices implements INetworksServices {
       Optional<Network> networkOptional = repoNetworks.findById(id);
       if (networkOptional.isPresent()) {
         return networkOptional.get();
-    }
-    return null;
+      }
+      return null;
    }
 
    @Override

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.mrando.azucardj.model.Contact;
-import com.mrando.azucardj.service.ContactsServices;
+import com.mrando.azucardj.service.ContactsService;
 
 @RestController
 @RequestMapping("/contacts")
@@ -17,20 +17,20 @@ import com.mrando.azucardj.service.ContactsServices;
 public class ContactsController {
 
     @Autowired
-    private ContactsServices contactsServices;
+    private ContactsService contactsService;
 
     @GetMapping
     @Operation(summary = "Listar contactos", description = "Retorna todos los contactos registrados")
     @ApiResponse(responseCode = "200", description = "Lista de contactos obtenida exitosamente")
     public List<Contact> fetch() {
-        return contactsServices.fetch();
+        return contactsService.fetch();
     }
 
     @PostMapping
     @Operation(summary = "Crear contacto", description = "Registra un nuevo contacto de perfil")
     @ApiResponse(responseCode = "200", description = "Contacto creado exitosamente")
     public void save(@RequestBody Contact contact) {
-        contactsServices.save(contact);
+        contactsService.save(contact);
     }
 
     @PutMapping("/{id}")
@@ -38,7 +38,7 @@ public class ContactsController {
     @ApiResponse(responseCode = "200", description = "Contacto actualizado exitosamente")
     @ApiResponse(responseCode = "404", description = "Contacto no encontrado")
     public Contact update(@PathVariable Integer id, @RequestBody Contact contact) {
-        return contactsServices.update(id, contact);
+        return contactsService.update(id, contact);
     }
 
     @GetMapping("/{id}")
@@ -46,7 +46,7 @@ public class ContactsController {
     @ApiResponse(responseCode = "200", description = "Contacto encontrado")
     @ApiResponse(responseCode = "404", description = "Contacto no encontrado")
     public Contact getById(@PathVariable Integer id) {
-        return contactsServices.findById(id);
+        return contactsService.findById(id);
     }
 
 }

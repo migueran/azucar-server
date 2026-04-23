@@ -3,7 +3,7 @@ package com.mrando.azucardj.service.Interfaces;
 import java.util.List;
 import com.mrando.azucardj.model.Contact;
 
-public interface IContactsServices {
+public interface IContactsService {
     List<Contact> fetch();
     void save(Contact contact);
     Contact findById(Integer id);

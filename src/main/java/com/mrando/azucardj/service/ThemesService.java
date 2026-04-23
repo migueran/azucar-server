@@ -1,20 +1,21 @@
 package com.mrando.azucardj.service;
 
 import com.mrando.azucardj.repository.ThemesRepository;
-import java.util.LinkedList;
+// import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
 import com.mrando.azucardj.model.Theme;
-import com.mrando.azucardj.service.Interfaces.IThemesServices;
+import com.mrando.azucardj.service.Interfaces.IThemesService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ThemesServices implements IThemesServices {
+public class ThemesService implements IThemesService {
 
     // private List<Theme> ThemesMocka = null;
-    // ThemesServices() {
+    // ThemesService() {
     //     ThemesMocka = new LinkedList<Theme>();
     //     ThemesMocka.add( new Theme(
     //         301, 401, "Bohemian Rhapsody", 201, 501
@@ -48,11 +49,8 @@ public class ThemesServices implements IThemesServices {
     //     );
     // }
 
-    private final ThemesRepository themesRepository;
-
-  ThemesServices(ThemesRepository themesRepository) {
-    this.themesRepository = themesRepository;
-  }
+    @Autowired
+    private ThemesRepository themesRepository;
 
     @Override
     public List<Theme> fetch() {

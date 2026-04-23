@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mrando.azucardj.model.Video;
 
-public interface IVideosServices {
+public interface IVideosService {
     List<Video> fetch();
     void save(Video videoUrl);
     Video findById(Integer idVideo);

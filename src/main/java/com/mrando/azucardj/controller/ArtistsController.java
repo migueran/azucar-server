@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.mrando.azucardj.model.Artist;
-import com.mrando.azucardj.service.ArtistsServices;
+import com.mrando.azucardj.service.ArtistsService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -20,20 +20,20 @@ import org.springframework.web.bind.annotation.*;
 public class ArtistsController {
 
     @Autowired
-    private ArtistsServices artistsServices;
+    private ArtistsService artistsService;
 
     @GetMapping
     @Operation(summary = "Listar artistas", description = "Retorna todos los artistas registrados")
     @ApiResponse(responseCode = "200", description = "Lista de artistas obtenida exitosamente")
     public List<Artist> fetch() {
-        return artistsServices.fetch();
+        return artistsService.fetch();
     }
 
     @PostMapping
     @Operation(summary = "Crear artista", description = "Registra un nuevo artista")
     @ApiResponse(responseCode = "200", description = "Artista creado exitosamente")
     public void save(@RequestBody Artist artist) {
-        artistsServices.save(artist);
+        artistsService.save(artist);
     }
 
     @GetMapping("/{id}")
@@ -42,7 +42,7 @@ public class ArtistsController {
     @ApiResponse(responseCode = "404", description = "Artista no encontrado")
     public Optional<Artist> getById(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
-        return artistsServices.findById(id);
+        return artistsService.findById(id);
     }
 
     @GetMapping("/name/{name}")
@@ -51,7 +51,7 @@ public class ArtistsController {
     @ApiResponse(responseCode = "404", description = "Artista no encontrado")
     public Optional<Artist> getByName(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
-        return artistsServices.findByName(name);
+        return artistsService.findByName(name);
     }
 
     @GetMapping("/genero/{idGenre}")
@@ -59,7 +59,7 @@ public class ArtistsController {
     @ApiResponse(responseCode = "200", description = "Lista de artistas obtenida exitosamente")
     public List<Artist> getByGenre(@PathVariable Integer idGenre, Model model) {
         model.addAttribute("idGenre", idGenre);
-        return artistsServices.findByGenre(idGenre);
+        return artistsService.findByGenre(idGenre);
     }
 
 }

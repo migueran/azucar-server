@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.mrando.azucardj.model.DjList;
 
 @Service
-public interface IDjListServices {
+public interface IDjListsService {
   List<DjList> fetch();
   void save(DjList djList);
   DjList findById(Integer idDjList);

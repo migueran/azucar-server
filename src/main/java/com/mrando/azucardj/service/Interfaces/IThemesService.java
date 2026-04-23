@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.mrando.azucardj.model.Theme;
 
-public interface IThemesServices {
+public interface IThemesService {
     List<Theme> fetch();
     void save(Theme theme);
     Optional<Theme> findById(Integer idTheme);

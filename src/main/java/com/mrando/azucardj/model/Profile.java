@@ -20,6 +20,7 @@ public class Profile {
   private String name;
   @Column(name = "last_name")
   private String lastName;
+  private String email;
   @OneToMany(targetEntity = Contact.class, fetch = FetchType.LAZY, mappedBy = "profile")
   private List<Contact> contact;
 
@@ -47,6 +48,14 @@ public class Profile {
     return lastName;
   }
 
+    public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
   public void setContact(List<Contact> contact) {
     // list.add() //mrando
     this.contact = contact;
@@ -62,6 +71,7 @@ public class Profile {
       "id=" + id +
       ", name='" + name + '\'' +
       ", lastName='" + lastName + '\'' +
+      ", email='" + email + '\'' +
       ", contact=" + contact +
       '}';
   }

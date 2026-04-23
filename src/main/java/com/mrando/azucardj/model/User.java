@@ -21,7 +21,6 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private String email;
   private String username;
   private String password;
   private int status;
@@ -45,14 +44,6 @@ public class User {
 
   public void setId(int id) {
     this.id = id;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
   }
 
   public String getUsername() {
@@ -116,7 +107,6 @@ public class User {
   public String toString() {
     return "User{" +
       "id=" + id +
-      ", email='" + email + '\'' +
       ", username='" + username + '\'' +
       ", password='" + password + '\'' +
       ", status=" + status +

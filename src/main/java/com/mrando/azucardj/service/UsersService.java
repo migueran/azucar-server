@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.mrando.azucardj.model.User;
 import com.mrando.azucardj.repository.UserRepository;
-import com.mrando.azucardj.service.Interfaces.IUserService;
+import com.mrando.azucardj.service.Interfaces.IUsersService;
 
 @Service
-public class UserService implements IUserService {
+public class UsersService implements IUsersService {
 
     @Autowired
     private UserRepository userRepository;
@@ -37,7 +37,6 @@ public class UserService implements IUserService {
         Optional<User> existingUser = userRepository.findById(id);
         if (existingUser.isPresent()) {
             User updatedUser = existingUser.get();
-            updatedUser.setEmail(user.getEmail());
             updatedUser.setUsername(user.getUsername());
             updatedUser.setPassword(user.getPassword());
             updatedUser.setStatus(user.getStatus());

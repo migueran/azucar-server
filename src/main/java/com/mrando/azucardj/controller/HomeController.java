@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,11 @@ public class HomeController {
   @Operation(summary = "Encriptar texto", description = "Retorna el texto encriptado en BCrypt")
   @ApiResponse(responseCode = "200", description = "Texto encriptado exitosamente")
   public String Encoder(@PathVariable("text") String text) {
-    return text + " Encriptado en Bcrypt: " + passwordEncoder.encode(text);
+    try {
+      return text + " Encriptado en Bcrypt: " + passwordEncoder.encode(text);
+    } catch (ResponseStatusException e) {
+      throw e;
+    }
   }
 
 }

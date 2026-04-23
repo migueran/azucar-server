@@ -3,20 +3,20 @@ package com.mrando.azucardj.service;
 import com.mrando.azucardj.repository.ItemsRepository;
 import java.util.List;
 import com.mrando.azucardj.model.Item;
-import com.mrando.azucardj.service.Interfaces.IItemsServices;
+import com.mrando.azucardj.service.Interfaces.IItemsService;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class ItemsServices implements IItemsServices {
+public class ItemsService implements IItemsService {
 
     private final ItemsRepository itemsRepository;
-    ItemsServices(ItemsRepository itemsRepository) {
+    ItemsService(ItemsRepository itemsRepository) {
       this.itemsRepository = itemsRepository;
     }
 
     // private List<Item> itemsMocka = null;
-    // public ItemsServices() {
+    // public ItemsService() {
     //     itemsMocka = new LinkedList<Item>();
     //     itemsMocka.add(
     //         new Item(3010, 0, 100, 0, 301)

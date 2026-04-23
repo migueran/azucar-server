@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import java.util.List;
 
 import com.mrando.azucardj.model.Genre;
-import com.mrando.azucardj.service.GenresServices;
+import com.mrando.azucardj.service.GenresService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -23,20 +23,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class GenresController {
 
     @Autowired
-    private GenresServices genresServices;
+    private GenresService genresService;
 
     @GetMapping
     @Operation(summary = "Listar géneros", description = "Retorna todos los géneros musicales")
     @ApiResponse(responseCode = "200", description = "Lista de géneros obtenida exitosamente")
     public List<Genre> fetch() {
-        return genresServices.fetch();
+        return genresService.fetch();
     }
 
     @PostMapping
     @Operation(summary = "Crear género", description = "Registra un nuevo género musical")
     @ApiResponse(responseCode = "200", description = "Género creado exitosamente")
     public void save(@RequestBody Genre genre) {
-        genresServices.save(genre);
+        genresService.save(genre);
     }
 
     @GetMapping("/{idGenre}")
@@ -45,7 +45,7 @@ public class GenresController {
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
     public Genre getById(@PathVariable Integer idGenre, Model model) {
         model.addAttribute("idGenre", idGenre);
-        return genresServices.findById(idGenre);
+        return genresService.findById(idGenre);
     }
 
     @GetMapping("/name/{name}")
@@ -54,7 +54,7 @@ public class GenresController {
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
     public Genre getByNane(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
-        return genresServices.findByName(name);
+        return genresService.findByName(name);
     }
 
     @PutMapping("/{id}")
@@ -62,7 +62,7 @@ public class GenresController {
     @ApiResponse(responseCode = "200", description = "Género actualizado exitosamente")
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
     public Genre update(@PathVariable Integer id, @RequestBody Genre genre) {
-        return genresServices.update(id, genre);
+        return genresService.update(id, genre);
     }
 
     @DeleteMapping("/{idGenre}")
@@ -70,6 +70,6 @@ public class GenresController {
     @ApiResponse(responseCode = "200", description = "Género eliminado exitosamente")
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
     public void delete(@PathVariable Integer idGenre) {
-        genresServices.delete(idGenre);
+        genresService.delete(idGenre);
     }
 }

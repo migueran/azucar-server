@@ -1,10 +1,8 @@
 package com.mrando.azucardj.controller;
 
 import java.util.List;
-
 import com.mrando.azucardj.model.Network;
-import com.mrando.azucardj.service.NetworksServices;
-
+import com.mrando.azucardj.service.NetworksService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,20 +16,28 @@ import org.springframework.web.bind.annotation.*;
 public class NetworksController {
 
     @Autowired
-    private NetworksServices networksServices;
+    private NetworksService networksService;
 
     @GetMapping
     @Operation(summary = "Listar redes", description = "Retorna todas las redes sociales registradas")
     @ApiResponse(responseCode = "200", description = "Lista de redes obtenida exitosamente")
     public List<Network> fetch() {
-        return networksServices.fetch();
+        try {
+            return networksService.fetch();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @PostMapping
     @Operation(summary = "Crear red", description = "Registra una nueva red social")
     @ApiResponse(responseCode = "200", description = "Red creada exitosamente")
     public void save(@RequestBody Network network) {
-        networksServices.save(network);
+        try {
+            networksService.save(network);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @GetMapping("/{id}")
@@ -39,8 +45,12 @@ public class NetworksController {
     @ApiResponse(responseCode = "200", description = "Red encontrada")
     @ApiResponse(responseCode = "404", description = "Red no encontrada")
     public Network getById(@PathVariable Integer id, Model model) {
-        model.addAttribute("id", id);
-        return networksServices.findById(id);
+        try {
+            model.addAttribute("id", id);
+            return networksService.findById(id);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @PutMapping("/{id}")
@@ -48,7 +58,11 @@ public class NetworksController {
     @ApiResponse(responseCode = "200", description = "Red actualizada exitosamente")
     @ApiResponse(responseCode = "404", description = "Red no encontrada")
     public Network update(@PathVariable Integer id, @RequestBody Network network) {
-        return networksServices.update(id, network);
+        try {
+            return networksService.update(id, network);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @GetMapping("/name/{name}")
@@ -56,8 +70,12 @@ public class NetworksController {
     @ApiResponse(responseCode = "200", description = "Red encontrada")
     @ApiResponse(responseCode = "404", description = "Red no encontrada")
     public Network getByName(@PathVariable String name, Model model) {
-        model.addAttribute("name", name);
-        return networksServices.findByName(name);
+        try {
+            model.addAttribute("name", name);
+            return networksService.findByName(name);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @DeleteMapping("/{id}")
@@ -65,6 +83,10 @@ public class NetworksController {
     @ApiResponse(responseCode = "200", description = "Red eliminada exitosamente")
     @ApiResponse(responseCode = "404", description = "Red no encontrada")
     public void delete(@PathVariable Integer id) {
-        networksServices.delete(id);
+        try {
+            networksService.delete(id);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }
