@@ -29,7 +29,11 @@ public class DjList {
   private List<User> owner;
   @Column(name = "init_date")
   private LocalDateTime initDate;
-  @OneToMany(targetEntity = Item.class, cascade = CascadeType.PERSIST, mappedBy = "djLists")
+  @OneToMany(
+    targetEntity = Item.class,
+    cascade = CascadeType.PERSIST,
+    mappedBy = "djLists"
+)
   private List<Item> items;
 
   public int getId() {

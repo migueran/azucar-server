@@ -13,8 +13,8 @@ public class ProfilesService implements IProfilesService {
   private ProfileRepository profileRepository;
 
   @Override
-  public void save(Profile profile) {
-    profileRepository.save(profile);
+  public Profile save(Profile profile) {
+    return profileRepository.save(profile);
   }
 
   @Override

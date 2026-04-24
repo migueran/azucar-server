@@ -2,6 +2,9 @@ package com.mrando.azucardj.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,7 +24,12 @@ public class Profile {
   @Column(name = "last_name")
   private String lastName;
   private String email;
-  @OneToMany(targetEntity = Contact.class, fetch = FetchType.LAZY, mappedBy = "profile")
+  @OneToMany(
+    targetEntity = Contact.class,
+    fetch = FetchType.LAZY,
+    mappedBy = "profile"
+  )
+  @JsonManagedReference
   private List<Contact> contact;
 
   public void setId(int id) {

@@ -63,7 +63,7 @@ public class AuthController {
     @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
     public ResponseEntity<User> register(@RequestBody User user) {
         try {
-            System.err.println("Registering user: " + user);
+            //authService.getCurrentUser(user.getUsername());
             List<Role> roleList = user.getRole();
             roleList.forEach(role -> {
                 if (rolesService.findById(role.getId()) == null) {
@@ -82,13 +82,14 @@ public class AuthController {
                         HttpStatus.BAD_REQUEST, "La red no existe"
                     );
                 }
+            });
+            profilesService.save(profile);
+            contactList.forEach(contact -> {
                 contact.setProfile(profile);
                 contactsService.save(contact);
             });
-            System.err.println("Registering profile: " + profile);
-            profilesService.save(profile);
-            // return ResponseEntity.ok(user);
             User created = authService.register(user);
+            System.err.println("created: " + created);
             return ResponseEntity.status(HttpStatus.CREATED).body(created);
         } catch (ResponseStatusException e) {
             throw e;

@@ -33,6 +33,7 @@ public class Item {
   @JoinColumn(name = "id_theme")
   private Theme theme;
   @ManyToOne(targetEntity = DjList.class)
+  @JoinColumn(name = "djLists_id")
   private DjList djLists;
 
   public int getId() {

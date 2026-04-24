@@ -60,4 +60,9 @@ public class AuthService {
         saved.setPassword(null);
         return saved;
     }
+
+    public User getCurrentUser(String username) {
+        return userRepository.findByUsername(username)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+    }
 }

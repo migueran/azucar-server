@@ -1,9 +1,12 @@
 package com.mrando.azucardj.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -14,9 +17,12 @@ public class Contact {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   @ManyToOne(targetEntity = Network.class)
+  @JoinColumn(name = "network_id")
   private Network network;
   private String url;
-  @ManyToOne(targetEntity = Profile.class)
+  @ManyToOne(targetEntity = Profile.class )
+  @JsonBackReference
+  @JoinColumn(name = "profile_id")
   private Profile profile;
 
   public int getId() {

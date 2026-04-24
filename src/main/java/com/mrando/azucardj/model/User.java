@@ -1,10 +1,16 @@
 package com.mrando.azucardj.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +23,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Users")
+@EntityListeners(AuditingEntityListener.class)
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +37,18 @@ public class User {
     inverseJoinColumns = @JoinColumn(name = "id_role")
   )
 	private List<Role> roles;
-  @OneToOne(targetEntity = Profile.class, cascade = CascadeType.PERSIST)
+  @OneToOne(
+    targetEntity = Profile.class
+    //cascade = CascadeType.PERSIST
+  )
   @JoinColumn(name = "id_profile", referencedColumnName = "id")
   private Profile profile;
-  @Column(name = "created_at", columnDefinition = "DATE")
-  private LocalDate createdAt;
-  @Column(name = "updated_at", columnDefinition = "DATE")
-  private LocalDate updatedAt;
+  @CreatedDate
+  @Column(name = "created_at",  updatable = false, columnDefinition = "TIMESTAMP")
+  private LocalDateTime createdAt;
+  @LastModifiedDate
+  @Column(name = "updated_at", columnDefinition = "TIMESTAMP")
+  private LocalDateTime updatedAt;
 
   public int getId() {
     return id;
@@ -115,7 +127,6 @@ public class User {
       ", updated_at='" + updatedAt + '\'' +
       '}';
   }
-
 
 }
 

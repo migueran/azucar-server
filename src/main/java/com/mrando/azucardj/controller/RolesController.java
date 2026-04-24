@@ -68,8 +68,6 @@ public class RolesController {
     @ApiResponse(responseCode = "200", description = "Rol actualizado exitosamente")
     @ApiResponse(responseCode = "404", description = "Rol no encontrado")
     public Role update(@PathVariable Integer id, @RequestBody Role role) {
-        System.err.println("ID: " + id + role);
-        System.err.println(role.getRole());
         try {
             return rolesService.update(id, role);
         } catch (Exception e) {
