@@ -1,20 +1,15 @@
 package com.mrando.azucardj.controller;
 
-import org.springframework.ui.Model;
-
 import java.util.List;
-
 import com.mrando.azucardj.model.Genre;
 import com.mrando.azucardj.service.GenresService;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
@@ -35,7 +30,15 @@ public class GenresController {
     @PostMapping
     @Operation(summary = "Crear género", description = "Registra un nuevo género musical")
     @ApiResponse(responseCode = "200", description = "Género creado exitosamente")
-    public void save(@RequestBody Genre genre) {
+    public void save(
+        @RequestBody Genre genre,
+        @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        List<String> userRole = userDetails.getAuthorities().stream()
+                .map(auth -> auth.getAuthority())
+                .toList();
+        if ( !userRole.contains("admin"))
+            throw new RuntimeException("Acceso denegado: solo administradores pueden crear géneros musicales");
         genresService.save(genre);
     }
 
@@ -43,8 +46,7 @@ public class GenresController {
     @Operation(summary = "Buscar género por ID", description = "Retorna un género dado su ID")
     @ApiResponse(responseCode = "200", description = "Género encontrado")
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
-    public Genre getById(@PathVariable Integer idGenre, Model model) {
-        model.addAttribute("idGenre", idGenre);
+    public Genre getById(@PathVariable Integer idGenre) {
         return genresService.findById(idGenre);
     }
 
@@ -52,8 +54,7 @@ public class GenresController {
     @Operation(summary = "Buscar género por nombre", description = "Retorna un género dado su nombre")
     @ApiResponse(responseCode = "200", description = "Género encontrado")
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
-    public Genre getByNane(@PathVariable String name, Model model) {
-        model.addAttribute("name", name);
+    public Genre getByNane(@PathVariable String name) {
         return genresService.findByName(name);
     }
 
@@ -61,7 +62,16 @@ public class GenresController {
     @Operation(summary = "Actualizar género", description = "Actualiza un género dado su ID")
     @ApiResponse(responseCode = "200", description = "Género actualizado exitosamente")
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
-    public Genre update(@PathVariable Integer id, @RequestBody Genre genre) {
+    public Genre update(
+        @PathVariable Integer id,
+        @RequestBody Genre genre,
+        @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        List<String> userRole = userDetails.getAuthorities().stream()
+                .map(auth -> auth.getAuthority())
+                .toList();
+        if (!userRole.contains("admin"))
+            throw new RuntimeException("Acceso denegado: solo administradores pueden modificar géneros musicales");
         return genresService.update(id, genre);
     }
 
@@ -69,7 +79,15 @@ public class GenresController {
     @Operation(summary = "Eliminar género", description = "Elimina un género dado su ID")
     @ApiResponse(responseCode = "200", description = "Género eliminado exitosamente")
     @ApiResponse(responseCode = "404", description = "Género no encontrado")
-    public void delete(@PathVariable Integer idGenre) {
+    public void delete(
+        @PathVariable Integer idGenre,
+        @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        List<String> userRole = userDetails.getAuthorities().stream()
+                .map(auth -> auth.getAuthority())
+                .toList();
+        if (!userRole.contains("admin"))
+            throw new RuntimeException("Acceso denegado: solo administradores pueden eliminar géneros musicales");
         genresService.delete(idGenre);
     }
 }

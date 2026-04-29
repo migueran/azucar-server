@@ -2,15 +2,12 @@ package com.mrando.azucardj.controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.mrando.azucardj.model.Theme;
 import com.mrando.azucardj.service.ThemesService;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -39,32 +36,28 @@ public class ThemesController {
     @Operation(summary = "Buscar tema por ID", description = "Retorna un tema dado su ID")
     @ApiResponse(responseCode = "200", description = "Tema encontrado")
     @ApiResponse(responseCode = "404", description = "Tema no encontrado")
-    public Optional<Theme> getById(@PathVariable Integer id, Model model) {
-        model.addAttribute("id", id);
+    public Optional<Theme> getById(@PathVariable Integer id) {
         return themesService.findById(id);
     }
 
     @GetMapping("/name/{name}")
     @Operation(summary = "Buscar temas por nombre", description = "Retorna temas que coincidan con el nombre dado")
     @ApiResponse(responseCode = "200", description = "Lista de temas obtenida exitosamente")
-    public List<Theme> getByName(@PathVariable String name, Model model) {
-        model.addAttribute("name", name);
+    public List<Theme> getByName(@PathVariable String name) {
         return themesService.findByName(name);
     }
 
     @GetMapping("/artist/{idArtist}")
     @Operation(summary = "Buscar temas por artista", description = "Retorna temas asociados a un artista dado su ID")
     @ApiResponse(responseCode = "200", description = "Temas del artista obtenidos exitosamente")
-    public List<Theme> getByArtist(@PathVariable Integer idArtist, Model model) {
-        model.addAttribute("idArtist", idArtist);
+    public List<Theme> getByArtist(@PathVariable Integer idArtist) {
         return themesService.findByArtist(idArtist);
     }
 
     @GetMapping("/genre/{idGenre}")
     @Operation(summary = "Buscar temas por género", description = "Retorna temas asociados a un género dado su ID")
     @ApiResponse(responseCode = "200", description = "Temas del género obtenidos exitosamente")
-    public List<Theme> getByGenre(@PathVariable Integer idGenre, Model model) {
-        model.addAttribute("idGenre", idGenre);
+    public List<Theme> getByGenre(@PathVariable Integer idGenre) {
         return themesService.findByGenre(idGenre);
     }
 }

@@ -4,10 +4,8 @@ import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.mrando.azucardj.model.Artist;
 import com.mrando.azucardj.service.ArtistsService;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
