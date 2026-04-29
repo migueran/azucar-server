@@ -29,32 +29,28 @@ public class Contact {
     return id;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
   public Network getNetwork() {
     return network;
-  }
-
-  public void setNetwork(Network network) {
-    this.network = network;
   }
 
   public String getUrl() {
     return url;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  public void setProfile(Profile profile) {
+    this.profile = profile;
   }
 
   public Profile getProfile() {
     return profile;
   }
 
-  public void setProfile(Profile profile) {
-    this.profile = profile;
+  public Contact update(Network newNetwork, String newUrl) {
+    if(newNetwork != null)
+      this.network = newNetwork;
+    if(newUrl != null)
+      this.url = newUrl;
+    return this;
   }
 
 }

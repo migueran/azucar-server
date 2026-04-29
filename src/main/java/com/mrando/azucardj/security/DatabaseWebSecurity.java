@@ -37,11 +37,8 @@ public class DatabaseWebSecurity {
       .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .authorizeHttpRequests(authz -> authz
         .requestMatchers("/auth/**", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
-        .requestMatchers("/**").permitAll()
-        // .requestMatchers("/**").hasAuthority("admin")
-        // .requestMatchers("/**").hasAuthority("writer")
-        // .requestMatchers("/**").hasAuthority("guest")
-        // .requestMatchers("/", "/lists", "/artists").permitAll()
+        .requestMatchers("/artists**", "/contacts**", "/lists**", "/genres/**", "/items/**", "/networks/**", "/themes/**", "/videos/**").hasAnyAuthority("admin", "creator", "visitor")
+        .requestMatchers("/", "/users", "/roles/**").hasAuthority("admin")
         .anyRequest().authenticated()
       )
       .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

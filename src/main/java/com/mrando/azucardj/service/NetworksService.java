@@ -37,14 +37,13 @@ public class NetworksService implements INetworksService {
 
    @Override
    public Network update(Integer idNetwork, Network network) {
-    Optional<Network> networkOptional = repoNetworks.findById(idNetwork);
-    if (networkOptional.isPresent()) {
-        Network existingNetwork = networkOptional.get();
-        existingNetwork.setName(network.getName());
-        return repoNetworks.save(existingNetwork);
-    }
-    return null;
-   }
+     repoNetworks.findById(idNetwork).ifPresent(existingNetwork -> {
+       existingNetwork.setName(network.getName());
+       System.err.println("Updating network with ID: " + existingNetwork);
+        repoNetworks.save(existingNetwork);
+    });
+    return repoNetworks.findById(idNetwork).orElse(null);
+  }
 
    @Override
    public void delete(Integer id) {

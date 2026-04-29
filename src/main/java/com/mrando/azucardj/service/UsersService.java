@@ -24,6 +24,10 @@ public class UsersService implements IUsersService {
         return userRepository.findById(id).orElse(null);
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
+
     public List<User> fetchDisabled() {
         return userRepository.findByStatus(0); // Assuming 0 = disabled
     }

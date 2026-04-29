@@ -63,7 +63,6 @@ public class AuthController {
     @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
     public ResponseEntity<User> register(@RequestBody User user) {
         try {
-            //authService.getCurrentUser(user.getUsername());
             List<Role> roleList = user.getRole();
             roleList.forEach(role -> {
                 if (rolesService.findById(role.getId()) == null) {
@@ -86,7 +85,7 @@ public class AuthController {
             profilesService.save(profile);
             contactList.forEach(contact -> {
                 contact.setProfile(profile);
-                contactsService.save(contact);
+                contactsService.save(contact, user.getUsername());
             });
             User created = authService.register(user);
             System.err.println("created: " + created);

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -56,7 +55,7 @@ public class Profile {
     return lastName;
   }
 
-    public String getEmail() {
+  public String getEmail() {
     return email;
   }
 
@@ -65,8 +64,11 @@ public class Profile {
   }
 
   public void setContact(List<Contact> contact) {
-    // list.add() //mrando
     this.contact = contact;
+  }
+
+  public void addContact(Contact contact) {
+    this.contact.add(contact);
   }
 
   public List<Contact> getContact() {

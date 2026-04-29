@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +34,13 @@ public class NetworksController {
     @PostMapping
     @Operation(summary = "Crear red", description = "Registra una nueva red social")
     @ApiResponse(responseCode = "200", description = "Red creada exitosamente")
-    public void save(@RequestBody Network network) {
+    public void save(@RequestBody Network network, @AuthenticationPrincipal UserDetails userDetails) {
+        List<String> userRole = userDetails.getAuthorities().stream()
+                .map(auth -> auth.getAuthority())
+                .toList();
+         if ( !userRole.contains("admin")) {
+            throw new RuntimeException("Acceso denegado: solo administradores pueden crear redes sociales");
+         }
         try {
             networksService.save(network);
         } catch (Exception e) {
@@ -57,7 +65,17 @@ public class NetworksController {
     @Operation(summary = "Actualizar red", description = "Actualiza una red social dado su ID")
     @ApiResponse(responseCode = "200", description = "Red actualizada exitosamente")
     @ApiResponse(responseCode = "404", description = "Red no encontrada")
-    public Network update(@PathVariable Integer id, @RequestBody Network network) {
+    public Network update(
+        @PathVariable Integer id,
+        @RequestBody Network network,
+        @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        List<String> userRole = userDetails.getAuthorities().stream()
+            .map(auth -> auth.getAuthority())
+            .toList();
+         if ( !userRole.contains("admin")) {
+            throw new RuntimeException("Acceso denegado: solo administradores pueden modificar redes sociales");
+         }
         try {
             return networksService.update(id, network);
         } catch (Exception e) {
@@ -82,7 +100,13 @@ public class NetworksController {
     @Operation(summary = "Eliminar red", description = "Elimina una red social dado su ID")
     @ApiResponse(responseCode = "200", description = "Red eliminada exitosamente")
     @ApiResponse(responseCode = "404", description = "Red no encontrada")
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable Integer id, @AuthenticationPrincipal UserDetails userDetails) {
+        List<String> userRole = userDetails.getAuthorities().stream()
+            .map(auth -> auth.getAuthority())
+            .toList();
+         if ( !userRole.contains("admin")) {
+            throw new RuntimeException("Acceso denegado: solo administradores pueden eliminar redes sociales");
+         }
         try {
             networksService.delete(id);
         } catch (Exception e) {
