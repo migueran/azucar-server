@@ -7,7 +7,8 @@ import com.mrando.azucardj.model.Theme;
 
 public interface IThemesService {
     List<Theme> fetch();
-    void save(Theme theme);
+    Theme save(Theme theme);
+    Theme update(Integer idTheme, Theme theme);
     Optional<Theme> findById(Integer idTheme);
     List<Theme> findByGenre(Integer idGenre);
     List<Theme> findByArtist(Integer idArtist);

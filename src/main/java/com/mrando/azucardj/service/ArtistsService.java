@@ -16,41 +16,6 @@ public class ArtistsService implements IArtistsService {
     @Autowired
     private ArtistsRepository artistsRepository;
 
-    // public List<Artist> artistsMocka = null;
-    // public ArtistsService() {
-    //     artistsMocka = new java.util.LinkedList<Artist>();
-    //     artistsMocka.add( new Artist(
-    //         201, "Queen", 501
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         202, "John Lennon", 502
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         203, "Eagles", 503
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         204, "Led Zeppelin", 504
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         205, "Nirvana", 505
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         206, "Michael Jackson", 506
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         207, "Bob Dylan", 507
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         208, "The Beatles", 508
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         209, "Prince", 509
-    //     ));
-    //     artistsMocka.add( new Artist(
-    //         210, "Oasis", 510
-    //     ));
-    // }
-
     @Override
     public List<Artist> fetch() {
         return artistsRepository.findAll();

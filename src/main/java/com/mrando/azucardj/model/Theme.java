@@ -35,32 +35,32 @@ public class Theme {
     return id;
   }
 
-  public Integer getVideo() {
-    return video.getId();
+  public Video getVideo() {
+    return video;
   }
 
   public String getName() {
     return name;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public List<Artist> getArtist() {
     return artist;
-  }
-
-  public void setArtist(List<Artist> artist) {
-    this.artist = artist;
   }
 
   public List<Genre> getGenre() {
     return genre;
   }
 
-  public void setGenre(List<Genre> genre) {
-    this.genre = genre;
+  public Theme updateTheme(Theme theme) {
+    if(theme.getName() != null)
+      this.name = theme.getName();
+    if(theme.getVideo() != null)
+      this.video = theme.getVideo();
+    if(theme.getArtist() != null && !theme.getArtist().isEmpty())
+      this.artist = theme.getArtist();
+    if(theme.getGenre() != null && !theme.getGenre().isEmpty())
+      this.genre = theme.getGenre();
+    return this;
   }
 
   public String toString() {

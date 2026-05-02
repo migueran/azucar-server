@@ -36,9 +36,9 @@ public class DatabaseWebSecurity {
       .csrf(csrf -> csrf.disable())
       .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .authorizeHttpRequests(authz -> authz
-        .requestMatchers("/auth/**", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
+        .requestMatchers("/", "/auth/**", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
         .requestMatchers("/artists**", "/contacts**", "/lists**", "/genres/**", "/items/**", "/networks/**", "/themes/**", "/videos/**").hasAnyAuthority("admin", "creator", "visitor")
-        .requestMatchers("/", "/users", "/roles/**").hasAuthority("admin")
+        .requestMatchers("/users", "/roles/**").hasAuthority("admin")
         .anyRequest().authenticated()
       )
       .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

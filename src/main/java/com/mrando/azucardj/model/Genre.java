@@ -1,15 +1,15 @@
 package com.mrando.azucardj.model;
 
-import java.util.List;
-
+// import java.util.List;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+// import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.JoinTable;
+// import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,10 +18,14 @@ public class Genre {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+  @Column(nullable = false, unique = true)
   private String name;
-  @ManyToMany(targetEntity = Artist.class, fetch = FetchType.LAZY)
-  @JoinTable(name = "artist_genre", joinColumns = @JoinColumn(name = "id_genre"), inverseJoinColumns = @JoinColumn(name = "id_artist"))
-  private List<Artist> artists;
+  // @ManyToMany(targetEntity = Artist.class, fetch = FetchType.LAZY)
+  // @JoinTable(name = "artist_genre", joinColumns = @JoinColumn(name = "id_genre"), inverseJoinColumns = @JoinColumn(name = "id_artist"))
+  // private List<Artist> artists;
+  // @ManyToMany(targetEntity = Theme.class, fetch = FetchType.LAZY)
+  // @JoinTable(name = "theme_genre", joinColumns = @JoinColumn(name = "id_genre"), inverseJoinColumns = @JoinColumn(name = "id_theme"))
+  // private List<Theme> themes;
 
   public int getId() {
     return id;
@@ -35,13 +39,13 @@ public class Genre {
     this.name = name;
   }
 
-  public void setArtists(List<Artist> artists) {
-    this.artists = artists;
-  }
+  // public void setArtists(List<Artist> artists) {
+  //   this.artists = artists;
+  // }
 
-  public List<Artist> getArtists() {
-    return artists;
-  }
+  // public List<Artist> getArtists() {
+  //   return artists;
+  // }
 
   public String toString() {
     return "Genre{" +

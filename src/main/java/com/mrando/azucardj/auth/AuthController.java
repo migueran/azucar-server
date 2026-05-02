@@ -1,7 +1,7 @@
 package com.mrando.azucardj.auth;
 
 import com.mrando.azucardj.model.Contact;
-import com.mrando.azucardj.model.Network;
+// import com.mrando.azucardj.model.Network;
 import com.mrando.azucardj.model.Profile;
 import com.mrando.azucardj.model.Role;
 import com.mrando.azucardj.model.User;

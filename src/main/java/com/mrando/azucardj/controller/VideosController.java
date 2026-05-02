@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import com.mrando.azucardj.model.Video;
 import com.mrando.azucardj.service.VideosService;
 
@@ -49,6 +48,17 @@ public class VideosController {
     @ApiResponse(responseCode = "200", description = "Video creado exitosamente")
     public void save(@RequestBody Video video) {
         videoService.save(video);
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Actualizar video", description = "Actualiza los datos de un video existente")
+    @ApiResponse(responseCode = "200", description = "Video actualizado exitosamente")
+    public void update(@PathVariable Integer id, @RequestBody Video video) {
+        Video existingVideo = videoService.findById(id);
+        if (existingVideo != null) {
+            Video updatedVideo = existingVideo.update(video);
+            videoService.save(updatedVideo);
+        }
     }
 
     @DeleteMapping("/{id}")

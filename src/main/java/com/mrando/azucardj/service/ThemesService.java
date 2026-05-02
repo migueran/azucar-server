@@ -58,8 +58,19 @@ public class ThemesService implements IThemesService {
     }
 
     @Override
-    public void save(Theme theme) {
-        themesRepository.save(theme);
+    public Theme save(Theme theme) {
+        return themesRepository.save(theme);
+    }
+
+    @Override
+    public Theme update(Integer idTheme, Theme theme) {
+        Optional<Theme> themeOptional = themesRepository.findById(idTheme);
+        if (themeOptional.isPresent()) {
+            Theme existingTheme = themeOptional.get();
+            existingTheme.updateTheme(theme);
+            return themesRepository.save(existingTheme);
+        }
+        return null;
     }
 
     @Override

@@ -12,7 +12,7 @@ El objetivo es una ambientación donde la imagen del video proyectado en pantall
 - conección a youtube api
 
 ## 1. Stack Tecnológico
-- **Lenguaje**: Java 21 (LTS)
+- **Lenguaje**: Java 25 (LTS)
 - **Framework Principal**: Spring Boot 4.x
 - **Gestor de Dependencias**: Maven (pom.xml)
 - **Base de Datos**: mysql

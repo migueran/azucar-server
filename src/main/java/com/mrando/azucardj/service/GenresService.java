@@ -16,19 +16,6 @@ public class GenresService implements IGenresService {
     @Autowired
 	private GenresRepository repoGenres;
 
-    // public List<Genre> genresList = Arrays.asList(
-    //     new Genre("Rock"),
-    //     new Genre("Pop"),
-    //     new Genre("Country Rock"),
-    //     new Genre("Classic Rock"),
-    //     new Genre("Grunge"),
-    //     new Genre("Pop"),
-    //     new Genre("Folk"),
-    //     new Genre("Rock"),
-    //     new Genre("Funk"),
-    //     new Genre("Britpop")
-    // );
-
     @Override
     public List<Genre> fetch() {
         return (List<Genre>) repoGenres.findAll();

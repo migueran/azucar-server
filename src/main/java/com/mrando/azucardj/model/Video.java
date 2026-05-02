@@ -19,24 +19,18 @@ public class Video {
     return id;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
   public String getName() {
     return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public String getUrl() {
     return url;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  public Video update(Video video) {
+    this.name = video.getName();
+    this.url = video.getUrl();
+    return this;
   }
 
   public String toString() {

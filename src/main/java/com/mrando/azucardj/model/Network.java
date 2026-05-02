@@ -2,7 +2,7 @@ package com.mrando.azucardj.model;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +17,7 @@ public class Network {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+  @Column(nullable = false, unique = true)
   private String name;
   @OneToMany(
     targetEntity = Contact.class,

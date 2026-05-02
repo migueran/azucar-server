@@ -30,23 +30,21 @@ public class Artist {
     return name;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setGenre(List<Genre> genre) {
-    this.genre = genre;
-  }
-
   public List<Genre> getGenre() {
     return genre;
+  }
+
+  public Artist update(Artist artist) {
+    this.name = artist.getName();
+    this.genre = artist.getGenre();
+    return this;
   }
 
   public String toString() {
     return "Artist{" +
       "id=" + id +
       ", name='" + name + '\'' +
-      ", idGenre=" + genre +
+      ", genre=" + genre +
       '}';
   }
 }
